@@ -1,0 +1,8 @@
+.ivsmButton{
+  padding: 15px 10px;
+  border-radius: 3px;
+  background-color: rgb(75, 171, 255);
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+}

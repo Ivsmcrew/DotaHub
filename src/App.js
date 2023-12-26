@@ -1,9 +1,13 @@
-function App() {
+import React from "react";
+import Login from "./pages/Login";
+import AuthProvider from "./components/AuthProvider";
+import './styles/App.css'
 
+function App() {
   return (
-    <div className="App">
-      Hello world
-    </div>
+    <AuthProvider>
+      <Login /> 
+    </AuthProvider>
   );
 }
 
