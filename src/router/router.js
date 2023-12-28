@@ -5,11 +5,15 @@ import Login from "../pages/Login";
 import Matches from "../pages/Matches";
 import Teams from "../pages/Teams";
 
-export const routes = [
+export const privateRoutes = [
   {path: '/heroes', element: Heroes},
   {path: '/', element: Homepage},
   {path: '/matches', element: Matches},
   {path: '/teams', element: Teams},
   {path: '/login', element: Login},
   {path: '*', element: ErrorPage},
+]
+
+export const publicRoutes = [
+  {path: '*', element: Login},
 ]

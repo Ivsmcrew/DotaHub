@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserAuthContext } from "../context/context";
 import { Route, Routes } from "react-router-dom";
-import { routes } from "../router/router";
+import { publicRoutes, privateRoutes } from "../router/router";
 
 const AppRouter = function() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext);
@@ -9,7 +9,7 @@ const AppRouter = function() {
   if (isAuth) {
     return (
       <Routes>
-        {routes.map((route) => 
+        {privateRoutes.map((route) => 
           <Route 
             path={route.path}
             element={<route.element />}
@@ -21,7 +21,7 @@ const AppRouter = function() {
   } else {
     return (
       <Routes>
-        {routes.map((route) => 
+        {publicRoutes.map((route) => 
           <Route 
             path={route.path}
             element={<route.element />}
