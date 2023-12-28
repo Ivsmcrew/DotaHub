@@ -1,0 +1,22 @@
+.ivsmMenuButton{
+  width: 28px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.line{
+  height: 3px;
+  background-color: #fff;
+}
+.background{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.background:hover{
+  background-color:#0415211f
+}

@@ -1,0 +1,11 @@
+.navBar{
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+.menuButton{
+  margin-left: 5px;
+}
+.menuLogo{
+  margin-left: 5px;
+}

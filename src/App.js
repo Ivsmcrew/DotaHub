@@ -1,12 +1,14 @@
 import React from "react";
-import Login from "./pages/Login";
 import AuthProvider from "./components/AuthProvider";
-import './styles/App.css'
+import IvsmNavbar from "./UI/navbar/IvsmNavbar";
+import './styles/App.css';
+import AppRouter from "./components/AppRouter";
 
 function App() {
   return (
     <AuthProvider>
-      <Login /> 
+      <IvsmNavbar />
+      <AppRouter />
     </AuthProvider>
   );
 }
