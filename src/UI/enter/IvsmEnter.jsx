@@ -6,14 +6,14 @@ import classes from "./IvsmEnter.module.css";
 const IvsmEnter = function() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext);
 
-  function login() {
+  function exit() {
     setIsAuth(false);
     localStorage.removeItem('auth');
   }
 
   if (isAuth) {
     return(
-      <Link onClick={login} className={classes.enter} to='/login'>
+      <Link onClick={exit} className={classes.enter} to='/login'>
         <button>EXIT</button>
       </Link>
     )
