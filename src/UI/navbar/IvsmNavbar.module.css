@@ -1,11 +1,27 @@
 .navBar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
   display: flex;
   align-items: center;
   height: 80px;
+  background-color: rgba(15, 25, 61, 0.6);
+  backdrop-filter: blur(20px);
 }
 .menuButton{
   margin-left: 5px;
 }
 .menuLogo{
   margin-left: 5px;
+}
+.link{
+  font-size: 1.3rem;
+}
+.links{
+  position: absolute;
+  left: 45%;
+  display: flex;
+  column-gap: 30px;
+  transform: translateX(-50%);
 }

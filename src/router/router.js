@@ -6,14 +6,15 @@ import Matches from "../pages/Matches";
 import Teams from "../pages/Teams";
 
 export const privateRoutes = [
-  {path: '/heroes', element: Heroes},
   {path: '/', element: Homepage},
+  {path: '/login', element: Login},
+  {path: '/heroes', element: Heroes},
   {path: '/matches', element: Matches},
   {path: '/teams', element: Teams},
-  {path: '/login', element: Login},
   {path: '*', element: ErrorPage},
 ]
 
 export const publicRoutes = [
+  {path: '/', element: Homepage},
   {path: '*', element: Login},
 ]

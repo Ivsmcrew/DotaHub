@@ -1,0 +1,12 @@
+.search{
+  margin-left: auto;
+  width: 300px;
+  padding: 12px 12px 12px 42px;
+  border-radius: 3px;
+  background-color: rgba(64, 68, 82, 0.438);
+  background-image: url(../../assets/icons/search30.svg);
+  background-repeat: no-repeat;
+  background-position: 5px;
+  color: white;
+  font-size: 1rem;
+}
