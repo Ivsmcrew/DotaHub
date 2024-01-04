@@ -18,10 +18,18 @@
 .link{
   font-size: 1.3rem;
 }
+.link:hover{
+  text-underline-offset: 10px;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+
+  transition-property: all;
+  transition-duration: 1s;
+}
 .links{
   position: absolute;
   left: 45%;
   display: flex;
-  column-gap: 30px;
+  column-gap: 40px;
   transform: translateX(-50%);
 }

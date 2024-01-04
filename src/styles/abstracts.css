@@ -1,8 +1,19 @@
+html{
+  height: 100%;
+}
 body{
-  background-color: rgb(32, 56, 77);
+  height: 100%;
+  background-color: rgb(60, 105, 176);
   color: rgb(197, 198, 198);
   font-family: sans-serif;
   padding-top: 80px;
+}
+#root{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .h1{
   font-family: 'Poppins', sans-serif;

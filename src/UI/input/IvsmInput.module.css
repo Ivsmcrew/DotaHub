@@ -5,7 +5,7 @@
 .ivsmInput{
   padding: 15px 15px;
   border-radius: 2px;
-  background-color: #333333;
+  background-color: rgba(103, 107, 122, 0.438);
   color: white;
   font-size: 1.2rem;
 }

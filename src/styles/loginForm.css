@@ -4,7 +4,7 @@
 .loginForm__backGround{
   display: flex;
   margin-top: 25px;
-  background-color: rgb(8, 16, 24);
+  background-color: rgb(13, 26, 39);
   border-radius: 5px;
 }
 .loginForm__left{
