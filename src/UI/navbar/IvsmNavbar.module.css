@@ -8,6 +8,7 @@
   height: 80px;
   background-color: rgba(15, 25, 61, 0.6);
   backdrop-filter: blur(20px);
+  z-index: 100;
 }
 .menuButton{
   margin-left: 5px;

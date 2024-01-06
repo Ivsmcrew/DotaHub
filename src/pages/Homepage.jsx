@@ -2,8 +2,8 @@ import React from "react";
 
 const Homepage = function() {
   return (
-    <div>
-      Homepage
+    <div className="homeBackground">
+      home
     </div>
   )
 }

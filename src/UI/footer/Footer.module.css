@@ -1,9 +1,12 @@
 .footer{
+  z-index: 100;
   display: flex;
   align-self: flex-end;
   width: 100%;
   background-color: rgba(15, 25, 61, 0.6);
+  backdrop-filter: blur(20px);
   padding: 30px 15%;
+  margin-top: -201px;
 }
 .links{
   display: flex;

@@ -3,6 +3,7 @@ import classes from "./Footer.module.css";
 import IconGit from "../../assets/icons/IconGit";
 import IconVk from "../../assets/icons/IconVk";
 import IconTg from "../../assets/icons/IconTg";
+import { Link } from "react-router-dom";
 
 const Footer = function() {
   return (
@@ -22,23 +23,41 @@ const Footer = function() {
       <div className={classes.departments}>
         <div className={classes.department}>
           <h4 className={classes.h4}>Support</h4>
-          <a href="/">Help</a>
-          <a href="/">Advisories</a>
-          <a href="/">Contacts</a>
-          <a href="/">Status</a>
+          <Link to='/'>
+            Help
+          </Link>
+          <Link to='/'>
+            Advisories
+          </Link>
+          <Link to='/'>
+            Contacts
+          </Link>
+          <Link to='/'>
+            Status
+          </Link>
         </div>
 
         <div className={classes.department}>
           <h4 className={classes.h4}>Company</h4>
-          <a href="/">About</a>
-          <a href="/">Blog</a>
+          <Link to='/'>
+            About
+          </Link>
+          <Link to='/'>
+            Blog
+          </Link>
         </div>
 
         <div className={classes.department}>
           <h4 className={classes.h4}>Terms & Policies</h4>
-          <a href="/">Policies</a>
-          <a href="/">Terms of use</a>
-          <a href="/">Privacy</a>
+          <Link to='/'>
+            Policies
+          </Link>
+          <Link to='/'>
+            Terms of use
+          </Link>
+          <Link to='/'>
+            Privacy
+          </Link>
         </div>
       </div>
     </div>
