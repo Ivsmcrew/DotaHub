@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import codeIcon from "../assets/icons/code.png";
 import keyboardIcon from "../assets/icons/keyboard.png";
 import freeIcon from "../assets/icons/testimonials.png";
-import Parallax from 'parallax-js'
+import Parallax from 'parallax-js';
+import background from '../assets/images/background1.jpg';
 
 const Homepage = function() {
   useEffect(() => {
@@ -13,11 +14,9 @@ const Homepage = function() {
   }, [])
 
   return (
-    <div className="homepage">
+    <div className="main">
       <div className="homepage__backdrop-scene" id="scene">
-        <div data-depth="0.05" className="homepage__backdrop-filter">
-          <div className="homepage__backdrop-image" ></div>
-        </div>
+        <img data-depth="0.05" className="homepage__backdrop-image" src={background} alt="" />
       </div>
 
       <div className="homepage__content">

@@ -9,9 +9,13 @@ body{
   font-family: sans-serif;
 }
 #root{
-  height: 100%;
+  min-height: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+.main{
+  flex: 1 1 auto;
+  display: flex;
   justify-content: center;
 }
 .h1{

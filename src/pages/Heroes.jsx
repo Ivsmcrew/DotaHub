@@ -2,9 +2,7 @@ import React from "react";
 
 const Heroes = function() {
   return (
-    <div>
-      Heroes
-    </div>
+    <div className="main">Heroes</div>
   )
 }
 

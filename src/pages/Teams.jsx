@@ -2,7 +2,7 @@ import React from "react";
 
 const Teams = function() {
   return (
-    <div>
+    <div className="main">
       Teams
     </div>
   )

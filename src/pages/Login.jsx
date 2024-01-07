@@ -13,15 +13,17 @@ const Login = function() {
   }
 
   return(
-    <div className="loginForm">
-      <h1 className="h1">Log in</h1>
-      <div className="loginForm__backGround">
-        <div className="loginForm__left">
-          <IvsmLoginForm login={login}/>
-        </div>  
-        <div className="loginForm__right">
-          <IvsmLoginQR />
-        </div>  
+    <div className="main">
+      <div className="loginForm">
+        <h1 className="h1">Log in</h1>
+        <div className="loginForm__backGround">
+          <div className="loginForm__left">
+            <IvsmLoginForm login={login}/>
+          </div>  
+          <div className="loginForm__right">
+            <IvsmLoginQR />
+          </div>  
+        </div>
       </div>
     </div>
   )

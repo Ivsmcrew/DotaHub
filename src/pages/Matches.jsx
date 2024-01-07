@@ -2,7 +2,7 @@ import React from "react";
 
 const Matches = function() {
   return (
-    <div>
+    <div className="main">
       Matches
     </div>
   )
