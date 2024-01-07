@@ -6,7 +6,7 @@
   background-color: rgba(15, 25, 61, 0.6);
   backdrop-filter: blur(20px);
   padding: 30px 15%;
-  margin-top: -201px;
+  transform: translateY(-100%);
 }
 .links{
   display: flex;
