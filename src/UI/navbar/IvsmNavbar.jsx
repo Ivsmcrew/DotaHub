@@ -5,6 +5,7 @@ import classes from "./IvsmNavbar.module.css";
 import { Link } from "react-router-dom";
 import Search from "../search/Search";
 import IvsmEnter from "../enter/IvsmEnter";
+import { navbarData } from "./NavbarData";
 
 const IvsmNavbar = function() {
   return(
@@ -12,9 +13,16 @@ const IvsmNavbar = function() {
       <IvsmMenuButton className={classes.menuButton}/>
       <IvsmLogo className={classes.menuLogo}/>
       <div className={classes.links}>
-        <Link className={classes.link} to='/heroes'>Heroes</Link>
-        <Link className={classes.link} to='/matches'>Matches</Link>
-        <Link className={classes.link} to='/teams'>Teams</Link>
+        {navbarData.map((item, index) => {
+          return (
+            <Link key={index} 
+                  className={classes.link} 
+                  to={item.to}
+            >
+              {item.title}
+            </Link>
+          )
+        })}
       </div>
       <Search />
       <IvsmEnter />

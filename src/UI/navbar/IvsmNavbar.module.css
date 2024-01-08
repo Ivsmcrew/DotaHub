@@ -27,8 +27,7 @@
   text-decoration-thickness: 2px;
 }
 .links{
-  position: absolute;
-  left: 48%;
+  margin-left: 30%;
   display: flex;
   column-gap: 40px;
   transform: translateX(-50%);

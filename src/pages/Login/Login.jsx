@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import IvsmLoginForm from "../components/IvsmLoginForm";
-import IvsmLoginQR from "../components/IvsmLoginQR";
-import { UserAuthContext } from "../context/context";
+import IvsmLoginForm from "../../components/IvsmLoginForm";
+import IvsmLoginQR from "../../components/IvsmLoginQR";
+import { UserAuthContext } from "../../context/context";
 
 const Login = function() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext)

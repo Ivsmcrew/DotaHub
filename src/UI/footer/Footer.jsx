@@ -1,63 +1,56 @@
 import React from "react";
 import classes from "./Footer.module.css";
-import IconGit from "../../assets/icons/IconGit";
-import IconVk from "../../assets/icons/IconVk";
-import IconTg from "../../assets/icons/IconTg";
 import { Link } from "react-router-dom";
+import { footerDataMap } from "./FooterData";
 
 const Footer = function() {
+  //variables
+  const iconsDataArray = footerDataMap.get('iconLinks');
+  const supportDataArray = footerDataMap.get('supportLinks');
+  const companyDataArray = footerDataMap.get('companyLinks');
+  const termsDataArray = footerDataMap.get('termsLinks');
+
+  //functions
+  function getIcons(dataArray) {
+    return dataArray.map((item, index) => {
+      return(
+        <a key={index} className={classes.link} href={item.href}>
+          {item.icon}
+        </a>
+      )
+    })
+  }
+  function getLinks(dataArray) {
+    return dataArray.map((item, index) => {
+      return(
+        <Link key={index} to={item.to}>
+          {item.title}
+        </Link>
+      )
+    })
+  }
+
+  //component
   return (
     <div className={classes.footer}>
       <div className={classes.links}>
-        <a className={classes.link} href="https://github.com/Ivsmcrew">
-          <IconGit />
-        </a>
-        <a className={classes.link} href="https://t.me/IVS_M">
-          <IconVk />
-        </a>
-        <a className={classes.link} href="https://vk.com/son_of_korzh">
-          <IconTg />
-        </a>
+        { getIcons(iconsDataArray) }
       </div>
 
       <div className={classes.departments}>
         <div className={classes.department}>
           <h4 className={classes.h4}>Support</h4>
-          <Link to='/'>
-            Help
-          </Link>
-          <Link to='/'>
-            Advisories
-          </Link>
-          <Link to='/'>
-            Contacts
-          </Link>
-          <Link to='/'>
-            Status
-          </Link>
+          { getLinks(supportDataArray) }
         </div>
 
         <div className={classes.department}>
           <h4 className={classes.h4}>Company</h4>
-          <Link to='/'>
-            About
-          </Link>
-          <Link to='/'>
-            Blog
-          </Link>
+          { getLinks(companyDataArray) }
         </div>
 
         <div className={classes.department}>
           <h4 className={classes.h4}>Terms & Policies</h4>
-          <Link to='/'>
-            Policies
-          </Link>
-          <Link to='/'>
-            Terms of use
-          </Link>
-          <Link to='/'>
-            Privacy
-          </Link>
+          { getLinks(termsDataArray) }
         </div>
       </div>
     </div>

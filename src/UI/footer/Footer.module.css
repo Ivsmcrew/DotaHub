@@ -6,7 +6,6 @@
   background-color: rgba(15, 25, 61, 0.6);
   backdrop-filter: blur(20px);
   padding: 30px 15%;
-  /* margin-top: calc(60px - 210px); */
 }
 .links{
   display: flex;
