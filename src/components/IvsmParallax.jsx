@@ -12,9 +12,9 @@ function IvsmParallax({dataDepth, backgroundSrc}) {
   }, [])
 
   return (
-    <div ref={ref} className="homepage__backdrop-scene">
+    <div ref={ref} className="parallax__backdrop-scene">
       <img data-depth={dataDepth} 
-           className="homepage__backdrop-image" 
+           className="parallax__backdrop-image" 
            src={backgroundSrc} 
            alt='background pic'
       />
