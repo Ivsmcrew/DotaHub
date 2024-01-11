@@ -1,0 +1,26 @@
+.ivsmSidebar{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index: 1000;
+  width: 200px;
+  height: 100%;
+  background-color: #fff;
+  transform: translateX(-100%);
+}
+.ivsmSidebar_active{
+  transform: translateX(0);
+}
+.backLayer{
+  display: none;
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-color: rgba(13, 12, 24, 0.658);
+  z-index: 900;
+}
+.backLayer_active{
+  display: block;
+}

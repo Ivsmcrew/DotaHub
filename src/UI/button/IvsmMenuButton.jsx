@@ -3,7 +3,7 @@ import classes from "./IvsmMenuButton.module.css";
 
 const IvsmMenuButton = function(props) {
   return(
-    <div className={classes.background + ` ${props.className}`}>
+    <div onClick={props.onClick} className={classes.background + ` ${props.className}`}>
       <div className={classes.ivsmMenuButton}>
         <div className={classes.line}></div>
         <div className={classes.line}></div>
