@@ -5,4 +5,10 @@
   color: white;
   text-align: center;
   font-size: 1.2rem;
+
+  transition-property: background-color;
+  transition-duration: 0.1s;
+}
+.ivsmButton:active{
+  background-color: rgb(53, 146, 226);
 }

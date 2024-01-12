@@ -9,4 +9,9 @@
   background-position: 5px;
   color: white;
   font-size: 1rem;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+.search:focus{
+  background-color: rgba(139, 142, 151, 0.438);
 }

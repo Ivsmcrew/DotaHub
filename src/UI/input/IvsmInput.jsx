@@ -7,7 +7,7 @@ const IvsmInput = function(props) {
       <label htmlFor={props.id}>
         {props.title}
       </label>
-      <input className={classes.ivsmInput}/>
+      <input id={props.id} className={classes.ivsmInput} {...props}/>
     </div>
   )
 }

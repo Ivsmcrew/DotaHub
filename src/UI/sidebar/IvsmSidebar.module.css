@@ -6,7 +6,6 @@
   bottom:0;
   left:0;
   background-color: rgb(105, 106, 153);
-  /* background-color: rgba(37, 34, 58); */
   opacity: 0;
   z-index: 900;
   transition-property: opacity;
@@ -49,8 +48,12 @@ a:has(.logo) {
   align-items: center;
   padding: 12px 0 12px 50px;
   font-size: 1.1rem;
+  background-color: transparent;
+  transition-duration: 0.1s;
+  transition-property: background-color;
 }
 .ivsmSidebar__link:hover{
+  color: white;
   background-color: #0c0b1d;
 }
 a:has(.ivsmSidebar__link):last-child {

@@ -18,17 +18,19 @@
   margin-left: 5px;
 }
 .link{
+  padding-bottom: 5px;
   font-size: 1.3rem;
+  border: 3px solid transparent; 
+  transition-property: color, border;
+  transition-duration: 0.2s;
 }
 .link:hover{
   color: #fff;
-  text-underline-offset: 10px;
-  text-decoration-line: underline;
-  text-decoration-thickness: 2px;
+  border-bottom: 2px solid white; 
 }
 .links{
   margin-left: 30%;
   display: flex;
-  column-gap: 40px;
+  column-gap: 35px;
   transform: translateX(-50%);
 }
