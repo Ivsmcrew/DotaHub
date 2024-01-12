@@ -1,11 +1,14 @@
 .footer{
   z-index: 100;
-  display: flex;
-  align-self: flex-end;
   width: 100%;
   background-color: rgba(15, 25, 61, 0.6);
   backdrop-filter: blur(20px);
+}
+.content{
+  margin: 0 auto;
+  display: flex;
   padding: 30px 15%;
+  max-width: 1900px;
 }
 .links{
   display: flex;

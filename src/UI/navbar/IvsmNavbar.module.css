@@ -1,15 +1,20 @@
-.navBar{
+.header{
   position: sticky;
   left: 0;
   top: 0;
   right: 0;
-  display: flex;
-  align-items: center;
   height: 80px;
   width: 100%;
   background-color: rgba(15, 25, 61, 0.6);
   backdrop-filter: blur(20px);
   z-index: 100;
+}
+.content{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  max-width: 1900px;
+  height: 100%;
 }
 .menuButton{
   margin-left: 5px;

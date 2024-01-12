@@ -16,26 +16,28 @@ const IvsmNavbar = function() {
   }
 
   return(
-    <div className={classes.navBar}>
-      <IvsmMenuButton className={classes.menuButton} 
-                      onClick={sidebarToggle}
-      />
-      <IvsmLogo className={classes.menuLogo}/>
-      <div className={classes.links}>
-        {navbarData.map((item, index) => {
-          return (
-            <Link key={index} 
-                  className={classes.link} 
-                  to={item.to}
-            >
-              {item.title}
-            </Link>
-          )
-        })}
+    <header className={classes.header}>
+      <div className={classes.content}>
+        <IvsmMenuButton className={classes.menuButton} 
+                        onClick={sidebarToggle}
+        />
+        <IvsmLogo className={classes.menuLogo}/>
+        <div className={classes.links}>
+          {navbarData.map((item, index) => {
+            return (
+              <Link key={index} 
+                    className={classes.link} 
+                    to={item.to}
+              >
+                {item.title}
+              </Link>
+            )
+          })}
+        </div>
+        <Search />
+        <IvsmEnter />
       </div>
-      <Search />
-      <IvsmEnter />
-    </div>
+    </header>
   )
 }
 

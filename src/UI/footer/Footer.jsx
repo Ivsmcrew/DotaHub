@@ -32,28 +32,30 @@ const Footer = function() {
 
   //component
   return (
-    <div className={classes.footer}>
-      <div className={classes.links}>
-        { getIcons(iconsDataArray) }
+    <footer className={classes.footer}>
+      <div className={classes.content}>
+        <div className={classes.links}>
+          { getIcons(iconsDataArray) }
+        </div>
+
+        <div className={classes.departments}>
+          <div className={classes.department}>
+            <h4 className={classes.h4}>Support</h4>
+            { getLinks(supportDataArray) }
+          </div>
+
+          <div className={classes.department}>
+            <h4 className={classes.h4}>Company</h4>
+            { getLinks(companyDataArray) }
+          </div>
+
+          <div className={classes.department}>
+            <h4 className={classes.h4}>Terms & Policies</h4>
+            { getLinks(termsDataArray) }
+          </div>
+        </div>
       </div>
-
-      <div className={classes.departments}>
-        <div className={classes.department}>
-          <h4 className={classes.h4}>Support</h4>
-          { getLinks(supportDataArray) }
-        </div>
-
-        <div className={classes.department}>
-          <h4 className={classes.h4}>Company</h4>
-          { getLinks(companyDataArray) }
-        </div>
-
-        <div className={classes.department}>
-          <h4 className={classes.h4}>Terms & Policies</h4>
-          { getLinks(termsDataArray) }
-        </div>
-      </div>
-    </div>
+    </footer>
   )
 }
 

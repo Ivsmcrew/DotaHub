@@ -5,7 +5,7 @@ import IvsmParallax from "../../components/IvsmParallax";
 
 const Homepage = function() {
   return (
-    <div className="main">
+    <main className="main">
       <IvsmParallax dataDepth={0.05} backgroundSrc={background} />
 
       <div className="homepage__content">
@@ -23,7 +23,7 @@ const Homepage = function() {
           })}
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 
