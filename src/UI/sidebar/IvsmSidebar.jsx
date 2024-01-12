@@ -23,19 +23,16 @@ function IvsmSidebar() {
       <aside className={isActive ?
                       `${classes.ivsmSidebar} ${classes.ivsmSidebar_active}` :
                       `${classes.ivsmSidebar}`}>
-        <IvsmLogo onClick={sidebarToggle}/>
+        <IvsmLogo className={classes.logo} onClick={sidebarToggle}/>
         <ul className={classes.ivsmSidebar__list}>
           {sidebarData.map((item, index) => {
             return(
-              <li key={index} 
-                  className={classes.ivsmSidebar__link} 
-                  onClick={sidebarToggle}
-              >
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
+                <Link key={index}  to={item.path} onClick={sidebarToggle}>
+                  <li className={classes.ivsmSidebar__link}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </li>
                 </Link>
-              </li>
             )
           })}
         </ul>
