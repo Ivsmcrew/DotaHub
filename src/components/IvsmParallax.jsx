@@ -12,12 +12,18 @@ function IvsmParallax({dataDepth, backgroundSrc}) {
   }, [])
 
   return (
-    <div ref={ref} className="parallax__backdrop-scene">
-      <img data-depth={dataDepth} 
-           className="parallax__backdrop-image" 
-           src={backgroundSrc} 
-           alt='background pic'
-      />
+    <div className="parallax">
+      <div ref={ref} className="parallax__backdrop-scene">
+        <div data-depth={dataDepth} 
+             style={{backgroundImage: `url(${backgroundSrc})`, 
+                     width: `100%`, 
+                     height: `100%`, 
+                     filter: `brightness(40%)`, 
+                     backgroundPosition: `center`, 
+                     backgroundRepeat: `no-repeat`,
+                     backgroundSize: `cover`}}>
+        </div>
+      </div>
     </div>
   )
 }
