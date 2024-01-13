@@ -14,6 +14,7 @@ const AppRouter = function() {
       <Route path="/" element={<Layout />}>
         {routes.map((route) => 
           <Route 
+            index={route.index}
             path={route.path}
             element={<route.element />}
             key={route.path}
