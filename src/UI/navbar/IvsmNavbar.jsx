@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import IvsmMenuButton from "../button/IvsmMenuButton";
 import IvsmLogo from "../logo/IvsmLogo";
 import classes from "./IvsmNavbar.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Search from "../search/Search";
 import IvsmEnter from "../enter/IvsmEnter";
 import { navbarData } from "./NavbarData";
@@ -14,6 +14,20 @@ const IvsmNavbar = function() {
   function sidebarToggle() {
     setIsActive(!isActive);
   }
+  function getLinks() {
+    return(
+      navbarData.map((item, index) => {
+        return (
+          <NavLink key={index} 
+                className={({isActive}) => isActive ? `${classes.link} ${classes.active}` : classes.link} 
+                to={item.to}
+          >
+            {item.title}
+          </NavLink>
+        )
+      })
+    )
+  }
 
   return(
     <header className={classes.header}>
@@ -23,16 +37,7 @@ const IvsmNavbar = function() {
         />
         <IvsmLogo className={classes.menuLogo}/>
         <div className={classes.links}>
-          {navbarData.map((item, index) => {
-            return (
-              <Link key={index} 
-                    className={classes.link} 
-                    to={item.to}
-              >
-                {item.title}
-              </Link>
-            )
-          })}
+          {getLinks()}
         </div>
         <Search />
         <IvsmEnter />
