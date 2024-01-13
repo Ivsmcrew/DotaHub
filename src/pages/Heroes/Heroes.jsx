@@ -18,18 +18,25 @@ const Heroes = function() {
 
   //______________________________________________________COMPONENT_________________________________________
   return (
-    <div className={classes.main}>
-      {isHeroesLoading 
-      ? <div>Loading...</div> 
-      : heroes.map((item, index) => {
-          return (
-            <div key={index}>
-              {item.localized_name}
-            </div>
-          )
-        })        
-      }
-    </div>
+    <main className={classes.main}>
+      <div className={classes.content}>
+        <div className={classes.heroes}>
+          {isHeroesLoading 
+            ? <div>Loading...</div> 
+            : heroes.map((item, index) => {
+                return (
+                  <div className={classes.hero}>
+                    <img className={classes.heroIcon} src={'https://steamcdn-a.akamaihd.net' + item.img} alt="hero icon" />
+                    <span className={classes.heroName} key={index}>
+                      {item.localized_name}
+                    </span>
+                  </div>
+                )
+              })        
+          }
+        </div>
+      </div>
+    </main>
   )
 }
 
