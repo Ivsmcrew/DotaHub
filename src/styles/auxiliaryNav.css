@@ -1,0 +1,11 @@
+.auxNav{
+}
+.auxNav_list{
+  display: flex;
+  column-gap: 20px;
+}
+.auxNav_item{
+  padding: 10px;
+  background-color: rgba(15, 25, 61, 0.6);
+  border-radius: 3px;
+}
