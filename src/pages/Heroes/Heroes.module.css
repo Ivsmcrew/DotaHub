@@ -44,3 +44,16 @@
 .subtitle__matches{
 
 }
+table{
+  border-collapse: collapse;
+}
+td, th{
+  border: 1px solid rgb(227, 153, 16);
+  text-align: center;
+}
+thead, tfoot{
+  background-color: brown;
+}
+tbody{
+  background-color: bisque;
+}

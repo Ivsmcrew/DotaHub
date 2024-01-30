@@ -3,14 +3,27 @@ import { useFetching } from "../../hooks/useFetching";
 import OpenDotaService from "../../API/OpenDotaService";
 import classes from "./Heroes.module.css";
 import AuxiliaryNav from "../../components/AuxiliaryNav";
+import Table from "../../components/Table";
 
 const Heroes = function() {
   //_______________________________________________________VARIABLE________________________________________
   const navItems = [
-    {to: '/heroes', title: 'PRO'},
-    {to: '/heroes', title: 'PUBLIC'},
-    {to: '/heroes', title: 'TURBO'},
+    {to: '/heroes/pro', title: 'PRO'},
+    {to: '/heroes/public', title: 'PUBLIC'},
+    {to: '/heroes/turbo', title: 'TURBO'},
   ]
+  let headersArr = ['hero', 'propick', 'proban', 'prowin'];
+  let heroesDataArr = [
+    new Map([
+      ['hero1', 'heroComponent1'], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+    ]),
+    new Map([
+      ['hero2', 'heroComponent2'], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+    ]),
+    new Map([
+      ['hero3', 'heroComponent3'], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+    ]),
+  ]; 
 
   //________________________________________________________STATES________________________________________
   const [heroes, setHeroes] = useState([]);
@@ -39,7 +52,9 @@ const Heroes = function() {
         </header>
 
         <div className={classes.heroes}>
-          {isHeroesLoading 
+          <Table headersArr={headersArr} heroesDataArr={heroesDataArr}/>
+
+          {/* {isHeroesLoading 
             ? <div>Loading...</div> 
             : heroes.map((item, index) => {
                 return (
@@ -51,7 +66,7 @@ const Heroes = function() {
                   </div>
                 )
               })        
-          }
+          } */}
         </div>
       </div>
     </main>
