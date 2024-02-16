@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useFetching } from "../../hooks/useFetching";
+import React from "react";
 import OpenDotaService from "../../API/OpenDotaService";
 import classes from "./Heroes.module.css";
 import AuxiliaryNav from "../../components/AuxiliaryNav";
-import Table from "../../components/Table";
+import Table from "../../UI/table/Table";
 
 const Heroes = function() {
   //_______________________________________________________VARIABLE________________________________________
@@ -12,30 +11,31 @@ const Heroes = function() {
     {to: '/heroes/public', title: 'PUBLIC'},
     {to: '/heroes/turbo', title: 'TURBO'},
   ]
-  let headersArr = ['hero', 'propick', 'proban', 'prowin'];
-  let heroesDataArr = [
+  const headersArr = ['HERO', 'PRO PICK+BAN(%)', 'PRO BAN(%)', 'PRO WIN(%)'];
+  const heroesDataArr = [
     new Map([
-      ['hero1', 'heroComponent1'], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+      ['heroImg', <img className={classes.heroIcon} src={OpenDotaService.steamCDN1 + '/apps/dota2/images/dota_react/heroes/antimage.png?'} alt="hero icon" />], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
     ]),
     new Map([
-      ['hero2', 'heroComponent2'], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+      ['heroImg', <img className={classes.heroIcon} src={OpenDotaService.steamCDN1 + '/apps/dota2/images/dota_react/heroes/antimage.png?'} alt="hero icon" />], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
     ]),
     new Map([
-      ['hero3', 'heroComponent3'], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+      ['heroImg', <img className={classes.heroIcon} src={OpenDotaService.steamCDN1 + '/apps/dota2/images/dota_react/heroes/antimage.png?'} alt="hero icon" />], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
     ]),
-  ]; 
+    new Map([
+      ['heroImg', <img className={classes.heroIcon} src={OpenDotaService.steamCDN1 + '/apps/dota2/images/dota_react/heroes/antimage.png?'} alt="hero icon" />], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+    ]),
+    new Map([
+      ['heroImg', <img className={classes.heroIcon} src={OpenDotaService.steamCDN1 + '/apps/dota2/images/dota_react/heroes/antimage.png?'} alt="hero icon" />], ['pick', 'pick%'], ['ban', 'ban%'], ['win', 'win%']
+    ])
+  ]
 
   //________________________________________________________STATES________________________________________
-  const [heroes, setHeroes] = useState([]);
-  const [getHeroes, isHeroesLoading, heroesError] = useFetching(async () => {
-    const response = await OpenDotaService.getAllHeroes();
-    setHeroes(await response.json())
-  })
+
+ 
 
   //______________________________________________________FUNCTIONS________________________________________
-  useEffect(() => {
-    getHeroes();
-  }, [])
+  
 
   //______________________________________________________COMPONENT_________________________________________
   return (
@@ -52,21 +52,7 @@ const Heroes = function() {
         </header>
 
         <div className={classes.heroes}>
-          <Table headersArr={headersArr} heroesDataArr={heroesDataArr}/>
-
-          {/* {isHeroesLoading 
-            ? <div>Loading...</div> 
-            : heroes.map((item, index) => {
-                return (
-                  <div key={index} className={classes.hero}>
-                    <img className={classes.heroIcon} src={OpenDotaService.steamCDN1 + item.img} alt="hero icon" />
-                    <span className={classes.heroName}>
-                      {item.localized_name}
-                    </span>
-                  </div>
-                )
-              })        
-          } */}
+          <Table headersArr={headersArr} tableDataArr={heroesDataArr}/>           
         </div>
       </div>
     </main>
