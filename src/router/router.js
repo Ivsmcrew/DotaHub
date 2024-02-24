@@ -8,7 +8,7 @@ import Teams from "../pages/Teams/Teams";
 export const privateRoutes = [
   {path: null, element: Homepage, index: true},
   {path: 'login', element: Login, index: false},
-  {path: 'heroes', element: Heroes, index: false},
+  {path: 'heroes/*', element: Heroes, index: false},
   {path: 'matches', element: Matches, index: false},
   {path: 'teams', element: Teams, index: false},
   {path: '*', element: ErrorPage, index: false},

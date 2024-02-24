@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import OpenDotaService from "../../API/OpenDotaService";
 import classes from "./Heroes.module.css";
 import AuxiliaryNav from "../../components/AuxiliaryNav";
 import Table from "../../UI/table/Table";
 
 const Heroes = function() {
+  
   //_______________________________________________________VARIABLE________________________________________
   const navItems = [
-    {to: '/heroes/pro', title: 'PRO'},
-    {to: '/heroes/public', title: 'PUBLIC'},
-    {to: '/heroes/turbo', title: 'TURBO'},
+    {path: 'pro', title: 'PRO'},
+    {path: 'public', title: 'PUBLIC'},
+    {path: 'turbo', title: 'TURBO'},
   ]
   const headersArr = ['HERO', 'PRO PICK(%)', 'PRO BAN(%)', 'PRO WIN(%)'];
 
@@ -23,7 +25,7 @@ const Heroes = function() {
   }, [])
  
   //______________________________________________________FUNCTIONS________________________________________
-  
+
 
   //______________________________________________________COMPONENT_________________________________________
   return (
@@ -39,9 +41,40 @@ const Heroes = function() {
           </div>
         </header>
 
-        <div className={classes.heroes}>
-          <Table headersArr={headersArr} tableDataArr={heroesDataArr}/>           
-        </div>
+        <Routes>
+          <Route 
+            path="" 
+            element={
+              <div className={classes.heroes}>
+                <Table headersArr={headersArr} tableDataArr={heroesDataArr}/>           
+              </div>
+            } 
+          />
+          <Route 
+            path="pro" 
+            element={
+              <div className={classes.heroes}>
+                <Table headersArr={headersArr} tableDataArr={heroesDataArr}/>           
+              </div>
+            } 
+          />
+          <Route 
+            path="public" 
+            element={
+              <div className={classes.heroes}>
+                <p>public</p>          
+              </div>
+            } 
+          />
+          <Route 
+            path="turbo"
+            element={
+              <div className={classes.heroes}>
+                <p>turbo</p>          
+              </div>
+            } 
+          />
+        </Routes>
       </div>
     </main>
   )

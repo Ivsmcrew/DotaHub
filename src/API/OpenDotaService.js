@@ -1,7 +1,7 @@
 import classes from "../pages/Heroes/Heroes.module.css";
+import { decimalRound } from "../utils/math";
 
 class OpenDotaService {
-  static gamesQuantity = 2000;
   static steamCDN1 = 'https://cdn.dota2.com';
   static steamCDN2 = 'https://steamcdn-a.akamaihd.net';
   static openDotaCDN = 'https://api.opendota.com/api';
@@ -20,18 +20,45 @@ class OpenDotaService {
   //returns heroesDataArr promise
   static async getHeroesDataArr() {
     try {
+      const numberOfProMatches = await this.getNumberOfProMatches();
       const heroStatsArr = await this.getHeroStats();
       const heroesDataArr = heroStatsArr.map((item) => {
         return new Map([
           ['heroImg', <img className={classes.heroIcon} src={this.steamCDN1 + item.img} alt="hero icon" />], 
-          ['pick', Math.round(item.pro_pick / this.gamesQuantity * 100)], 
-          ['ban', Math.round(item.pro_ban / this.gamesQuantity * 100)], 
-          ['win', Math.round((item.pro_win / item.pro_pick) * 100)],
+          ['pick', decimalRound(item.pro_pick / numberOfProMatches * 100)], 
+          ['ban', decimalRound(item.pro_ban / numberOfProMatches * 100)], 
+          ['win', decimalRound((item.pro_win / item.pro_pick) * 100)],
         ])
       })
       return heroesDataArr
     } catch(err) {
       console.log('Error message' + err.message)
+    }
+  }
+  
+  //returns match by id promise
+  static async getMatchById(id) {
+    try {
+      const response = await fetch(this.openDotaCDN + `/matches/${id}`)
+      const match = await response.json();
+      return match
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
+
+  //returns promise about pro matches from hero stats endpoint 
+  static async getNumberOfProMatches() {
+    try {
+      const heroes = await this.getHeroStats();
+      let numberOfProPicks = 0;
+      heroes.forEach((hero) => {
+        numberOfProPicks += hero.pro_pick;
+      })
+      const numberOfProMatches = numberOfProPicks/10;
+      return numberOfProMatches
+    } catch(err) {
+      console.log(err)
     }
   }
 }

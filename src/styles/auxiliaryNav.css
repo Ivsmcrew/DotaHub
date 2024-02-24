@@ -1,6 +1,4 @@
 .auxNav{
-}
-.auxNav_list{
   display: flex;
   column-gap: 20px;
 }
