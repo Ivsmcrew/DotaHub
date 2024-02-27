@@ -18,7 +18,7 @@ class OpenDotaService {
   }
 
   //returns heroesDataArr promise
-  static async getHeroesDataArr() {
+  static async getProHeroesDataArr() {
     try {
       const numberOfProMatches = await this.getNumberOfProMatches();
       const heroStatsArr = await this.getHeroStats();

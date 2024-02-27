@@ -6,6 +6,16 @@ import AuxiliaryNav from "../../components/AuxiliaryNav";
 import Table from "../../UI/table/Table";
 
 const Heroes = function() {
+  //________________________________________________________STATES________________________________________
+  const [heroesDataArr, setHeroesDataArr] = useState([]);
+  const [numberOfProMatches, setNumberOfProMatches] = useState(0);
+  useEffect(() => {
+    async function fetchData() {
+      setHeroesDataArr(await OpenDotaService.getProHeroesDataArr());
+      setNumberOfProMatches(await OpenDotaService.getNumberOfProMatches());
+    }
+    fetchData()
+  }, [])
   
   //_______________________________________________________VARIABLE________________________________________
   const navItems = [
@@ -13,31 +23,22 @@ const Heroes = function() {
     {path: 'public', title: 'PUBLIC'},
     {path: 'turbo', title: 'TURBO'},
   ]
-  const headersArr = ['HERO', 'PRO PICK(%)', 'PRO BAN(%)', 'PRO WIN(%)'];
-
-  //________________________________________________________STATES________________________________________
-  const [heroesDataArr, setHeroesDataArr] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      setHeroesDataArr(await OpenDotaService.getHeroesDataArr());
-    }
-    fetchData()
-  }, [])
+  const proHeadersArr = ['HERO', 'PRO PICK(%)', 'PRO BAN(%)', 'PRO WIN(%)'];
+  const publicHeadersArr = ['HERO', 'PUBLIC PICK(%)', 'PUBLIC BAN(%)', 'PUBLIC WIN(%)'];
+  const turboHeadersArr = ['HERO', 'TURBO PICK(%)', 'TURBO WIN(%)'];
  
-  //______________________________________________________FUNCTIONS________________________________________
-
-
   //______________________________________________________COMPONENT_________________________________________
   return (
     <main className={classes.main}>
       <div className={classes.content}>
+
         <header className={classes.heroes_header}>
           <AuxiliaryNav navItems={navItems}/>
           <div className={classes.subtitle}>
             <h3 className={classes.subtitle__h3}>
               HEROES IN PRO MATCHES
             </h3>
-            <span className={classes.subtitle__matches}>2k matches in last 7 days</span>
+            <span className={classes.subtitle__matches}>{Math.ceil(numberOfProMatches/100)/10}k matches in last 7 days</span>
           </div>
         </header>
 
@@ -46,7 +47,7 @@ const Heroes = function() {
             path="" 
             element={
               <div className={classes.heroes}>
-                <Table headersArr={headersArr} tableDataArr={heroesDataArr}/>           
+                <Table headersArr={proHeadersArr} tableDataArr={heroesDataArr}/>           
               </div>
             } 
           />
@@ -54,7 +55,7 @@ const Heroes = function() {
             path="pro" 
             element={
               <div className={classes.heroes}>
-                <Table headersArr={headersArr} tableDataArr={heroesDataArr}/>           
+                <Table headersArr={proHeadersArr} tableDataArr={heroesDataArr}/>           
               </div>
             } 
           />
