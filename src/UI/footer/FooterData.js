@@ -11,11 +11,11 @@ export const footerDataMap = new Map([
       'icon': <IconGit />
       },
       {
-      'href': 'https://t.me/IVS_M',
+      'href': 'https://vk.com/son_of_korzh',
       'icon': <IconVk />
       },
       {
-      'href': 'https://vk.com/son_of_korzh',
+      'href': 'https://t.me/IVS_M',
       'icon': <IconTg />
       },
     ]
