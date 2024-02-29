@@ -28,17 +28,17 @@ const Heroes = function() {
     {path: 'public', title: 'PUBLIC'},
     {path: 'turbo', title: 'TURBO'},
   ]
-  const proHeadersArr = ['HERO', 'PRO PICK(%)', 'PRO BAN(%)', 'PRO WIN(%)'];
+  const proHeadersArr = ['HERO', 'PRO PICK %(pcs)', 'PRO BAN %(pcs)', 'PRO WIN %(pcs)'];
   const publicHeadersArr = ['HERO', 
-                            'OVERALL WIN(%)', 
-                            'OVERALL PICK(%)', 
-                            'IMM/DIV/ANC WIN(%)', 
-                            'IMM/DIV/ANC PICK(%)', 
-                            'LEGEND/ARCH WIN(%)',
-                            'LEGEND/ARCH PICK(%)',
-                            'CRU/GUARD/HER WIN(%)',
-                            'CRU/GUARD/HER PICK(%)'];
-  const turboHeadersArr = ['HERO', 'TURBO PICK(%)', 'TURBO WIN(%)'];
+                            'OVERALL WIN %(pcs)', 
+                            'OVERALL PICK %(pcs)', 
+                            'IMM/DIV/ANC WIN %(pcs)', 
+                            'IMM/DIV/ANC PICK %(pcs)', 
+                            'LEGEND/ARCH WIN %(pcs)',
+                            'LEGEND/ARCH PICK %(pcs)',
+                            'CRU/GUARD/HER WIN %(pcs)',
+                            'CRU/GUARD/HER PICK %(pcs)'];
+  const turboHeadersArr = ['HERO', 'TURBO PICK %(pcs)', 'TURBO WIN %(pcs)'];
   const auxiliaryNavSubtitles = ['HEROES IN PRO MATCHES', 
                                  'HEROES IN PUBLIC MATCHES', 
                                  'HEROES IN TURBO MATCHES']//TODO1: get subtitles from router?
@@ -65,9 +65,10 @@ const Heroes = function() {
         </header>
 
         <Routes>
-          {subRoutes.map((route) => {
+          {subRoutes.map((route, index) => {
             return(
               <Route 
+                key={index}
                 path={route.path} 
                 element={
                   <div className={classes.heroes}>

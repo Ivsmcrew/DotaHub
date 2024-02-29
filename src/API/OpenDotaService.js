@@ -1,3 +1,4 @@
+import StatCell from "../UI/table/StatCell";
 import classes from "../pages/Heroes/Heroes.module.css";
 import { format, roundWithAcc } from "../utils/math";
 
@@ -24,10 +25,19 @@ class OpenDotaService {
       const heroStatsArr = await this.getHeroStats();
       const heroesDataArr = heroStatsArr.map((item) => {
         return new Map([
-          ['heroImg', <img className={classes.heroIcon} src={this.steamCDN1 + item.img} alt="hero icon" />], 
-          ['pick', roundWithAcc(item.pro_pick / numberOfProMatches * 100)], 
-          ['ban', roundWithAcc(item.pro_ban / numberOfProMatches * 100)], 
-          ['win', roundWithAcc((item.pro_win / item.pro_pick) * 100)],
+          ['heroImg', <img className={classes.heroIcon} 
+                           src={this.steamCDN1 + item.img} 
+                           alt="hero icon" />
+          ], 
+          ['pick', <StatCell percents={roundWithAcc(item.pro_pick / numberOfProMatches * 100)} 
+                             pieces={item.pro_pick} />
+          ], 
+          ['ban', <StatCell percents={roundWithAcc(item.pro_ban / numberOfProMatches * 100)} 
+                             pieces={item.pro_ban} />
+          ], 
+          ['win', <StatCell percents={roundWithAcc((item.pro_win / item.pro_pick) * 100)} 
+                            pieces={item.pro_win} />
+          ],
         ])
       })
       return heroesDataArr
@@ -36,7 +46,7 @@ class OpenDotaService {
     }
   }
 
-  //TODO: returns publicHeroesDataArr promise
+  //returns publicHeroesDataArr promise
   static async getPublicHeroesDataArr() {    
     try {
       let numberOfHeroCruMatches;
@@ -66,14 +76,22 @@ class OpenDotaService {
 
         return new Map([
           ['heroImg', <img className={classes.heroIcon} src={this.steamCDN1 + item.img} alt="hero icon" />],
-          ['overallWin', roundWithAcc(overallWin / overallHeroMatches*100)],
-          ['overallPick', roundWithAcc(overallHeroMatches / numberOfAllPublicMatches*100)],
-          ['ImmDivAncWin', roundWithAcc(numberOfImmWin / numberOfHeroImmMatches*100)],
-          ['ImmDivAncPick', roundWithAcc(numberOfHeroImmMatches / numberOfAllPublicImmMatches*100)],
-          ['LegendArchWin', roundWithAcc(numberOfLegendWin / numberOfHeroLegendMatches*100)],
-          ['LegendArchPick', roundWithAcc(numberOfHeroLegendMatches / numberOfAllPublicArchMatches*100)],
-          ['CruGuardHerWin', roundWithAcc(numberOfCruWin / numberOfHeroCruMatches*100)],
-          ['CruGuardHerPick', roundWithAcc(numberOfHeroCruMatches / numberOfAllPublicCruMatches*100)]
+          ['overallWin', <StatCell percents={roundWithAcc(overallWin / overallHeroMatches*100)} 
+                                   pieces={format(overallWin)} />],
+          ['overallPick', <StatCell percents={roundWithAcc(overallHeroMatches / numberOfAllPublicMatches*100)} 
+                                    pieces={format(overallHeroMatches)} />],
+          ['ImmDivAncWin', <StatCell percents={roundWithAcc(numberOfImmWin / numberOfHeroImmMatches*100)} 
+                                     pieces={format(numberOfImmWin)} />],
+          ['ImmDivAncPick', <StatCell percents={roundWithAcc(numberOfHeroImmMatches / numberOfAllPublicImmMatches*100)} 
+                                      pieces={format(numberOfHeroImmMatches)} />],
+          ['LegendArchWin', <StatCell percents={roundWithAcc(numberOfLegendWin / numberOfHeroLegendMatches*100)} 
+                                      pieces={format(numberOfLegendWin)} />],
+          ['LegendArchPick', <StatCell percents={roundWithAcc(numberOfHeroLegendMatches / numberOfAllPublicArchMatches*100)} 
+                                       pieces={format(numberOfHeroLegendMatches)} />],
+          ['CruGuardHerWin', <StatCell percents={roundWithAcc(numberOfCruWin / numberOfHeroCruMatches*100)} 
+                                       pieces={format(numberOfCruWin)} />],
+          ['CruGuardHerPick', <StatCell percents={roundWithAcc(numberOfHeroCruMatches / numberOfAllPublicCruMatches*100)} 
+                                        pieces={format(numberOfCruWin)} />]
         ])
       })
 
@@ -83,7 +101,7 @@ class OpenDotaService {
     }
   }
 
-  //TODO: returns turboHeroesDataArr promise
+  //returns turboHeroesDataArr promise
   static async getTurboHeroesDataArr() {
     try {
       let numberOfAllTurboMatches = await this.getNumberOfAllTurboMatches();
@@ -92,8 +110,10 @@ class OpenDotaService {
       const heroesDataArr = heroStatsArr.map((item) => {
         return new Map([
           ['heroImg', <img className={classes.heroIcon} src={this.steamCDN1 + item.img} alt="hero icon" />],
-          ['turboPick', roundWithAcc(item.turbo_picks / numberOfAllTurboMatches * 100)],
-          ['turboWin', roundWithAcc(item.turbo_wins / item.turbo_picks * 100)]
+          ['turboPick', <StatCell percents={roundWithAcc(item.turbo_picks / numberOfAllTurboMatches * 100)} 
+                                  pieces={format(item.turbo_picks)} />],
+          ['turboWin', <StatCell percents={roundWithAcc(item.turbo_wins / item.turbo_picks * 100)} 
+                                 pieces={format(item.turbo_wins)} />]
         ])
       })
       return heroesDataArr
@@ -188,6 +208,7 @@ class OpenDotaService {
     }
   }
 
+  //returns promise about number of all turbo matches
   static async getNumberOfAllTurboMatches() {
     try {
       const heroes = await this.getHeroStats();

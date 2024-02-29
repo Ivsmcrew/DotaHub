@@ -4,7 +4,7 @@ const Table = function({headersArr, tableDataArr}) {
       headElements.map((item, index) => {
         return(
           <th key={index}>
-            <span>{item}</span>
+            {item}
           </th>
         )
       })  
@@ -15,7 +15,7 @@ const Table = function({headersArr, tableDataArr}) {
       rowElements.map((item, index) => {
         return(
           <td key={index}>
-            <span>{item}</span>
+            {item}
           </td>
         )
       })  

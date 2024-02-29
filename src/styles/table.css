@@ -1,0 +1,36 @@
+.statCell{
+
+}
+.statCell__value{
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  column-gap: 3px;
+}
+.statCell__percents{
+  font-size: 1rem;
+}
+.statCell__pieces{
+  font-size: 0.8rem;
+}
+.indicator{
+  position: relative;
+  height: 4px;
+  width: 100%;
+}
+.indicator__background{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #939394;
+  z-index: 5;
+}
+.indicator__fullness{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+}
