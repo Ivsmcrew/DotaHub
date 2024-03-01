@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthProvider from "./components/AuthProvider";
 import SidebarProvider from "./components/SidebarProvider";
 import AppRouter from "./components/AppRouter";

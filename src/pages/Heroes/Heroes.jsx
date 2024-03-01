@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import OpenDotaService from "../../API/OpenDotaService";
 import classes from "./Heroes.module.css";
 import AuxiliaryNav from "../../components/AuxiliaryNav";
@@ -7,22 +7,44 @@ import Table from "../../UI/table/Table";
 import { format } from "../../utils/math";
 
 const Heroes = function() {
-  //________________________________________________________STATES________________________________________
   const [proHeroesDataArr, setProHeroesDataArr] = useState([]);
   const [publicHeroesDataArr, setPublicHeroesDataArr] = useState([]);
   const [turboHeroesDataArr, setTurboHeroesDataArr] = useState([]);
   const [numberOfProMatches, setNumberOfProMatches] = useState(0);
+  const [numberOfPublicMatches, setNumberOfPublicMatches] = useState(0);
+  const [numberOfTurboMatches, setNumberOfTurboMatches] = useState(0);
   useEffect(() => {
     async function fetchData() {
       setProHeroesDataArr(await OpenDotaService.getProHeroesDataArr());
       setPublicHeroesDataArr(await OpenDotaService.getPublicHeroesDataArr());
       setTurboHeroesDataArr(await OpenDotaService.getTurboHeroesDataArr());
       setNumberOfProMatches(await OpenDotaService.getNumberOfProMatches());
+      setNumberOfPublicMatches(await OpenDotaService.getNumberOfPublicMatches());
+      setNumberOfTurboMatches(await OpenDotaService.getNumberOfAllTurboMatches());
     }
     fetchData()
   }, [])
-  
-  //_______________________________________________________VARIABLE________________________________________
+
+  const auxiliaryNavSubtitles = ['HEROES IN PRO MATCHES', 
+                                 'HEROES IN PUBLIC MATCHES', 
+                                 'HEROES IN TURBO MATCHES'];
+  const [navSubtitle, setNavSubtitle] = useState(auxiliaryNavSubtitles[0]);
+  const [navNumberMatches, setNavNumberMatches] = useState(numberOfProMatches);
+  let location = useLocation();
+  useEffect(() => {
+    setNavNumberMatches(numberOfProMatches);
+    if (location.pathname.includes('pro')) {
+      setNavSubtitle(auxiliaryNavSubtitles[0]);
+      setNavNumberMatches(numberOfProMatches);
+    } else if (location.pathname.includes('public')) {
+      setNavSubtitle(auxiliaryNavSubtitles[1]);
+      setNavNumberMatches(numberOfPublicMatches);
+    } else if (location.pathname.includes('turbo')) {
+      setNavSubtitle(auxiliaryNavSubtitles[2]);
+      setNavNumberMatches(numberOfTurboMatches);
+    }
+  }, [location, numberOfProMatches, numberOfPublicMatches, numberOfTurboMatches])
+
   const navItems = [
     {path: 'pro', title: 'PRO'},
     {path: 'public', title: 'PUBLIC'},
@@ -39,9 +61,6 @@ const Heroes = function() {
                             'CRU/GUARD/HER WIN %(pcs)',
                             'CRU/GUARD/HER PICK %(pcs)'];
   const turboHeadersArr = ['HERO', 'TURBO PICK %(pcs)', 'TURBO WIN %(pcs)'];
-  const auxiliaryNavSubtitles = ['HEROES IN PRO MATCHES', 
-                                 'HEROES IN PUBLIC MATCHES', 
-                                 'HEROES IN TURBO MATCHES']//TODO1: get subtitles from router?
   const subRoutes = [
     {path: "", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr},
     {path: "pro", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr},
@@ -49,7 +68,6 @@ const Heroes = function() {
     {path: "turbo", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr},
   ]
  
-  //______________________________________________________COMPONENT_________________________________________
   return (
     <main className={classes.main}>
       <div className={classes.content}>
@@ -58,9 +76,9 @@ const Heroes = function() {
           <AuxiliaryNav navItems={navItems}/>
           <div className={classes.subtitle}>
             <h3 className={classes.subtitle__h3}>
-              {auxiliaryNavSubtitles[0]} {/* TODO1: get subtitles from router? It needs to check whether we are on a pro or public page(location)*/}
+              {navSubtitle}
             </h3>
-            <span className={classes.subtitle__matches}>{format(numberOfProMatches)} matches in last 7 days</span>{/* TODO1: get subtitles from router? It needs to check whether we are on a pro or public page(location)*/}
+            <span className={classes.subtitle__matches}>{format(navNumberMatches)} matches in last 7 days</span>{/* TODO1: get subtitles from router? It needs to check whether we are on a pro or public page(location)*/}
           </div>
         </header>
 
