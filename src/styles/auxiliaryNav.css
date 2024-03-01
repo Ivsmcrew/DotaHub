@@ -2,8 +2,12 @@
   display: flex;
   column-gap: 20px;
 }
-.auxNav_item{
+.auxNav__item{
   padding: 10px;
   background-color: rgba(15, 25, 61, 0.6);
   border-radius: 3px;
+}
+.auxNav__item_active{
+  background-color: rgba(15, 25, 61, 0.853);
+  color: white;
 }
