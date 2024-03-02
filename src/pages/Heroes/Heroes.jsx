@@ -78,7 +78,7 @@ const Heroes = function() {
             <h3 className={classes.subtitle__h3}>
               {navSubtitle}
             </h3>
-            <span className={classes.subtitle__matches}>{format(navNumberMatches)} matches in last 7 days</span>{/* TODO1: get subtitles from router? It needs to check whether we are on a pro or public page(location)*/}
+            <span className={classes.subtitle__matches}>{format(navNumberMatches)} matches in last 7 days</span>
           </div>
         </header>
 
@@ -89,9 +89,7 @@ const Heroes = function() {
                 key={index}
                 path={route.path} 
                 element={
-                  <div className={classes.heroes}>
-                    <Table headersArr={route.headersArr} tableDataArr={route.tableDataArr}/>           
-                  </div>
+                  <Table headersArr={route.headersArr} tableDataArr={route.tableDataArr}/>           
                 } 
               />
             )

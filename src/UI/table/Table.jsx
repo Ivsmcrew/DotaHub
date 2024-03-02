@@ -3,7 +3,7 @@ const Table = function({headersArr, tableDataArr}) {
     return (
       headElements.map((item, index) => {
         return(
-          <th key={index}>
+          <th className="th" key={index}>
             {item}
           </th>
         )
@@ -14,7 +14,7 @@ const Table = function({headersArr, tableDataArr}) {
     return (
       rowElements.map((item, index) => {
         return(
-          <td key={index}>
+          <td className="td" key={index}>
             {item}
           </td>
         )
@@ -23,23 +23,26 @@ const Table = function({headersArr, tableDataArr}) {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          {getHeadElements(headersArr)}
-        </tr>
-      </thead>
+    <div className="table-wrapper">
+      <table className="table">
+        <thead className="thead">
+          <tr className="tr">
+            {getHeadElements(headersArr)}
+          </tr>
+        </thead>
 
-      <tbody>
-        {tableDataArr.map((item, index) => {
-          return(
-            <tr key={index}>
-              {getRowElements(Array.from(item.values()))}
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
+        <tbody className="tbody">
+          {tableDataArr.map((item, index) => {
+            return(
+              <tr className="tr tbody__tr" key={index}>
+                {getRowElements(Array.from(item.values()))}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
+
   )
 }
 

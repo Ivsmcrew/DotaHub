@@ -10,7 +10,7 @@ function Indicator({fullness}) {
     <div className="indicator">
       <div className="indicator__background"></div>
       <div className="indicator__fullness" 
-           style={{right: right + '%', backgroundColor: `hsl(${hue}, 70%, 47%)`}}></div>
+           style={{right: right + '%', backgroundColor: `hsl(${hue}, 60%, 47%)`}}></div>
     </div>
   )
 }
