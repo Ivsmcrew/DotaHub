@@ -78,7 +78,6 @@ const Heroes = function() {
  
   window.addEventListener('scroll', () => {
     setScroll(window.scrollY)
-    console.log(scroll)
   })
 
   //_______________________COMPONENT__________________________
@@ -108,6 +107,7 @@ const Heroes = function() {
               />
             )
           })}
+
         </Routes>
 
         <ButtonScrollUp scroll={scroll}/>
