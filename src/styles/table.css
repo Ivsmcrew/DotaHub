@@ -77,3 +77,22 @@
   
   border-radius: 1px;
 }
+.heroCell{
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+}
+.heroCell:hover{
+  background-color: rgba(0, 0, 0, 0.144);
+}
+.heroCell__icon{
+  width: 70px;
+  border-radius: 3px;
+}
+.heroCell__name{
+  font-size: 1rem;
+  margin-left: 5px;
+}
+.heroCell:hover > .heroCell__name{
+  color:rgb(255, 255, 255);
+}

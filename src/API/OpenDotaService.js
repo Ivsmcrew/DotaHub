@@ -1,3 +1,4 @@
+import HeroCell from "../UI/table/HeroCell";
 import StatCell from "../UI/table/StatCell";
 import classes from "../pages/Heroes/Heroes.module.css";
 import { format, roundWithAcc } from "../utils/math";
@@ -25,9 +26,9 @@ class OpenDotaService {
       const heroStatsArr = await this.getHeroStats();
       const heroesDataArr = heroStatsArr.map((item) => {
         return new Map([
-          ['heroImg', <img className={classes.heroIcon} 
-                           src={this.steamCDN1 + item.img} 
-                           alt="hero icon" />
+          ['heroCell', <HeroCell id={item.id} 
+                                 iconSrc={this.steamCDN1 + item.img} 
+                                 name={item.localized_name} />
           ], 
           ['pick', <StatCell percents={roundWithAcc(item.pro_pick / numberOfProMatches * 100)} 
                              pieces={item.pro_pick} />
@@ -75,23 +76,34 @@ class OpenDotaService {
         overallWin = numberOfCruWin + numberOfLegendWin + numberOfImmWin;
 
         return new Map([
-          ['heroImg', <img className={classes.heroIcon} src={this.steamCDN1 + item.img} alt="hero icon" />],
+          ['heroCell', <HeroCell id={item.id} 
+                                 iconSrc={this.steamCDN1 + item.img} 
+                                 name={item.localized_name} />
+          ],
           ['overallWin', <StatCell percents={roundWithAcc(overallWin / overallHeroMatches*100)} 
-                                   pieces={format(overallWin)} />],
+                                   pieces={format(overallWin)} />
+          ],
           ['overallPick', <StatCell percents={roundWithAcc(overallHeroMatches / numberOfAllPublicMatches*100)} 
-                                    pieces={format(overallHeroMatches)} />],
+                                    pieces={format(overallHeroMatches)} />
+          ],
           ['ImmDivAncWin', <StatCell percents={roundWithAcc(numberOfImmWin / numberOfHeroImmMatches*100)} 
-                                     pieces={format(numberOfImmWin)} />],
+                                     pieces={format(numberOfImmWin)} />
+          ],
           ['ImmDivAncPick', <StatCell percents={roundWithAcc(numberOfHeroImmMatches / numberOfAllPublicImmMatches*100)} 
-                                      pieces={format(numberOfHeroImmMatches)} />],
+                                      pieces={format(numberOfHeroImmMatches)} />
+          ],
           ['LegendArchWin', <StatCell percents={roundWithAcc(numberOfLegendWin / numberOfHeroLegendMatches*100)} 
-                                      pieces={format(numberOfLegendWin)} />],
+                                      pieces={format(numberOfLegendWin)} />
+          ],
           ['LegendArchPick', <StatCell percents={roundWithAcc(numberOfHeroLegendMatches / numberOfAllPublicArchMatches*100)} 
-                                       pieces={format(numberOfHeroLegendMatches)} />],
+                                       pieces={format(numberOfHeroLegendMatches)} />
+          ],
           ['CruGuardHerWin', <StatCell percents={roundWithAcc(numberOfCruWin / numberOfHeroCruMatches*100)} 
-                                       pieces={format(numberOfCruWin)} />],
+                                       pieces={format(numberOfCruWin)} />
+          ],
           ['CruGuardHerPick', <StatCell percents={roundWithAcc(numberOfHeroCruMatches / numberOfAllPublicCruMatches*100)} 
-                                        pieces={format(numberOfCruWin)} />]
+                                        pieces={format(numberOfCruWin)} />
+          ]
         ])
       })
 
@@ -109,11 +121,16 @@ class OpenDotaService {
 
       const heroesDataArr = heroStatsArr.map((item) => {
         return new Map([
-          ['heroImg', <img className={classes.heroIcon} src={this.steamCDN1 + item.img} alt="hero icon" />],
+          ['heroCell', <HeroCell id={item.id} 
+                                 iconSrc={this.steamCDN1 + item.img} 
+                                 name={item.localized_name} />
+          ],
           ['turboPick', <StatCell percents={roundWithAcc(item.turbo_picks / numberOfAllTurboMatches * 100)} 
-                                  pieces={format(item.turbo_picks)} />],
+                                  pieces={format(item.turbo_picks)} />
+          ],
           ['turboWin', <StatCell percents={roundWithAcc(item.turbo_wins / item.turbo_picks * 100)} 
-                                 pieces={format(item.turbo_wins)} />]
+                                 pieces={format(item.turbo_wins)} />
+          ]
         ])
       })
       return heroesDataArr

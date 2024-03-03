@@ -1,0 +1,17 @@
+.scrollUp{
+  display: none;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.267);
+  position:fixed;
+  bottom: 70px;
+  right: 60px;
+  z-index: 500;
+  border-radius: 10px;
+}
+.scrollUp_active{
+  display: block;
+}
+.scrollUp:hover{
+  background-color: rgba(255, 255, 255, 0.428);
+}

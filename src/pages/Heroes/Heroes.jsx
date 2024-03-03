@@ -5,14 +5,23 @@ import classes from "./Heroes.module.css";
 import AuxiliaryNav from "../../components/AuxiliaryNav";
 import Table from "../../UI/table/Table";
 import { format } from "../../utils/math";
+import ButtonScrollUp from "../../UI/button/ButtonScrollUp";
 
 const Heroes = function() {
+  const [scroll, setScroll] = useState(0);
+  window.addEventListener('scroll', () => {
+    setScroll(window.scrollY)
+    console.log(scroll)
+  })
+
+
   const [proHeroesDataArr, setProHeroesDataArr] = useState([]);
   const [publicHeroesDataArr, setPublicHeroesDataArr] = useState([]);
   const [turboHeroesDataArr, setTurboHeroesDataArr] = useState([]);
   const [numberOfProMatches, setNumberOfProMatches] = useState(0);
   const [numberOfPublicMatches, setNumberOfPublicMatches] = useState(0);
   const [numberOfTurboMatches, setNumberOfTurboMatches] = useState(0);
+
   useEffect(() => {
     async function fetchData() {
       setProHeroesDataArr(await OpenDotaService.getProHeroesDataArr());
@@ -68,6 +77,7 @@ const Heroes = function() {
     {path: "turbo", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr},
   ]
  
+
   return (
     <main className={classes.main}>
       <div className={classes.content}>
@@ -95,6 +105,8 @@ const Heroes = function() {
             )
           })}
         </Routes>
+
+        <ButtonScrollUp scroll={scroll}/>
       </div>
     </main>
   )

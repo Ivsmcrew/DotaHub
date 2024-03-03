@@ -13,6 +13,7 @@ const IvsmNavbar = function() {
 
   function sidebarToggle() {
     setIsActive(!isActive);
+    document.documentElement.style.overflow = isActive ? 'visible' : 'hidden'
   }
   function getLinks() {
     return(
