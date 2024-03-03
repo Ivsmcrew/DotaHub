@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function HeroCell({id, iconSrc, name}) {
   return (
-    <Link to={`heroes/${id}`}>
+    <Link to={`/heroes/hero/${id}`}>
       <div className='heroCell'>
         <img className='heroCell__icon' src={iconSrc} alt="hero icon" />
         <span className='heroCell__name'>{name + " >"}</span>

@@ -1,4 +1,5 @@
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Hero from "../pages/Hero/Hero";
 import Heroes from "../pages/Heroes/Heroes";
 import Homepage from "../pages/Homepage/Homepage";
 import Login from "../pages/Login/Login";
@@ -9,6 +10,7 @@ export const privateRoutes = [
   {path: null, element: Homepage, index: true},
   {path: 'login', element: Login, index: false},
   {path: 'heroes/*', element: Heroes, index: false},
+  {path: 'heroes/hero/:id', element: Hero, index: false},
   {path: 'matches', element: Matches, index: false},
   {path: 'teams', element: Teams, index: false},
   {path: '*', element: ErrorPage, index: false},
