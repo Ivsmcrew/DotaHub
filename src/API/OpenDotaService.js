@@ -1,6 +1,5 @@
 import HeroCell from "../UI/table/HeroCell";
 import StatCell from "../UI/table/StatCell";
-import classes from "../pages/Heroes/Heroes.module.css";
 import { format, roundWithAcc } from "../utils/math";
 
 class OpenDotaService {

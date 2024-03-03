@@ -12,8 +12,8 @@ const IvsmNavbar = function() {
   const {isActive, setIsActive} = useContext(SidebarContext); 
 
   function sidebarToggle() {
-    setIsActive(!isActive);
     document.documentElement.style.overflow = isActive ? 'visible' : 'hidden'
+    setIsActive(!isActive);
   }
   function getLinks() {
     return(

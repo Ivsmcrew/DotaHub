@@ -9,6 +9,7 @@ function IvsmSidebar() {
   const {isActive, setIsActive} = useContext(SidebarContext);
 
   function sidebarToggle() {
+    document.documentElement.style.overflow = isActive ? 'visible' : 'hidden'
     setIsActive(!isActive);
   }
 

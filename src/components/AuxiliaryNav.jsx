@@ -6,7 +6,6 @@ const AuxiliaryNav = function({navItems, ...props}) {
       {navItems.map((item, index) => {
         return(
           <NavLink key={index} 
-                // className="auxNav_item" 
                 className={({isActive}) => isActive ? 'auxNav__item auxNav__item_active' : 'auxNav__item'}
                 to={item.path}>
             <span>{item.title}</span>
