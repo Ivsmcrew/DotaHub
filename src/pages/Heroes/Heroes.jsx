@@ -8,52 +8,7 @@ import { format } from "../../utils/math";
 import ButtonScrollUp from "../../UI/button/ButtonScrollUp";
 
 const Heroes = function() {
-  const [scroll, setScroll] = useState(0);
-  window.addEventListener('scroll', () => {
-    setScroll(window.scrollY)
-    console.log(scroll)
-  })
-
-
-  const [proHeroesDataArr, setProHeroesDataArr] = useState([]);
-  const [publicHeroesDataArr, setPublicHeroesDataArr] = useState([]);
-  const [turboHeroesDataArr, setTurboHeroesDataArr] = useState([]);
-  const [numberOfProMatches, setNumberOfProMatches] = useState(0);
-  const [numberOfPublicMatches, setNumberOfPublicMatches] = useState(0);
-  const [numberOfTurboMatches, setNumberOfTurboMatches] = useState(0);
-
-  useEffect(() => {
-    async function fetchData() {
-      setProHeroesDataArr(await OpenDotaService.getProHeroesDataArr());
-      setPublicHeroesDataArr(await OpenDotaService.getPublicHeroesDataArr());
-      setTurboHeroesDataArr(await OpenDotaService.getTurboHeroesDataArr());
-      setNumberOfProMatches(await OpenDotaService.getNumberOfProMatches());
-      setNumberOfPublicMatches(await OpenDotaService.getNumberOfPublicMatches());
-      setNumberOfTurboMatches(await OpenDotaService.getNumberOfAllTurboMatches());
-    }
-    fetchData()
-  }, [])
-
-  const auxiliaryNavSubtitles = ['HEROES IN PRO MATCHES', 
-                                 'HEROES IN PUBLIC MATCHES', 
-                                 'HEROES IN TURBO MATCHES'];
-  const [navSubtitle, setNavSubtitle] = useState(auxiliaryNavSubtitles[0]);
-  const [navNumberMatches, setNavNumberMatches] = useState(numberOfProMatches);
-  let location = useLocation();
-  useEffect(() => {
-    setNavNumberMatches(numberOfProMatches);
-    if (location.pathname.includes('pro')) {
-      setNavSubtitle(auxiliaryNavSubtitles[0]);
-      setNavNumberMatches(numberOfProMatches);
-    } else if (location.pathname.includes('public')) {
-      setNavSubtitle(auxiliaryNavSubtitles[1]);
-      setNavNumberMatches(numberOfPublicMatches);
-    } else if (location.pathname.includes('turbo')) {
-      setNavSubtitle(auxiliaryNavSubtitles[2]);
-      setNavNumberMatches(numberOfTurboMatches);
-    }
-  }, [location, numberOfProMatches, numberOfPublicMatches, numberOfTurboMatches])
-
+  //_______________________CONSTANTS__________________________
   const navItems = [
     {path: 'pro', title: 'PRO'},
     {path: 'public', title: 'PUBLIC'},
@@ -70,6 +25,50 @@ const Heroes = function() {
                             'CRU/GUARD/HER WIN %(pcs)',
                             'CRU/GUARD/HER PICK %(pcs)'];
   const turboHeadersArr = ['HERO', 'TURBO PICK %(pcs)', 'TURBO WIN %(pcs)'];
+  const auxiliaryNavSubtitles = ['HEROES IN PRO MATCHES', 
+                                 'HEROES IN PUBLIC MATCHES', 
+                                 'HEROES IN TURBO MATCHES'];
+ 
+  //_______________________STATES__________________________
+  const [scroll, setScroll] = useState(0);
+  const [proHeroesDataArr, setProHeroesDataArr] = useState([]);
+  const [publicHeroesDataArr, setPublicHeroesDataArr] = useState([]);
+  const [turboHeroesDataArr, setTurboHeroesDataArr] = useState([]);
+  const [numberOfProMatches, setNumberOfProMatches] = useState(0);
+  const [numberOfPublicMatches, setNumberOfPublicMatches] = useState(0);
+  const [numberOfTurboMatches, setNumberOfTurboMatches] = useState(0);
+  const [navSubtitle, setNavSubtitle] = useState(auxiliaryNavSubtitles[0]);
+  const [navNumberMatches, setNavNumberMatches] = useState(numberOfProMatches);
+
+  useEffect(() => {
+    async function fetchData() {
+      setProHeroesDataArr(await OpenDotaService.getProHeroesDataArr());
+      setPublicHeroesDataArr(await OpenDotaService.getPublicHeroesDataArr());
+      setTurboHeroesDataArr(await OpenDotaService.getTurboHeroesDataArr());
+      setNumberOfProMatches(await OpenDotaService.getNumberOfProMatches());
+      setNumberOfPublicMatches(await OpenDotaService.getNumberOfPublicMatches());
+      setNumberOfTurboMatches(await OpenDotaService.getNumberOfAllTurboMatches());
+    }
+    fetchData()
+  }, [])
+
+  //_______________________EFFECTS__________________________
+  let location = useLocation();
+  useEffect(() => {
+    setNavNumberMatches(numberOfProMatches);
+    if (location.pathname.includes('pro')) {
+      setNavSubtitle(auxiliaryNavSubtitles[0]);
+      setNavNumberMatches(numberOfProMatches);
+    } else if (location.pathname.includes('public')) {
+      setNavSubtitle(auxiliaryNavSubtitles[1]);
+      setNavNumberMatches(numberOfPublicMatches);
+    } else if (location.pathname.includes('turbo')) {
+      setNavSubtitle(auxiliaryNavSubtitles[2]);
+      setNavNumberMatches(numberOfTurboMatches);
+    }
+  }, [location, numberOfProMatches, numberOfPublicMatches, numberOfTurboMatches])
+
+  //_______________________FUNCTIONS__________________________
   const subRoutes = [
     {path: "", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr},
     {path: "pro", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr},
@@ -77,7 +76,12 @@ const Heroes = function() {
     {path: "turbo", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr},
   ]
  
+  window.addEventListener('scroll', () => {
+    setScroll(window.scrollY)
+    console.log(scroll)
+  })
 
+  //_______________________COMPONENT__________________________
   return (
     <main className={classes.main}>
       <div className={classes.content}>
