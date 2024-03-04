@@ -6,7 +6,6 @@ import AuxiliaryNav from "../../components/AuxiliaryNav";
 import Table from "../../UI/table/Table";
 import { format } from "../../utils/math";
 import ButtonScrollUp from "../../UI/button/ButtonScrollUp";
-import Hero from "../Hero/Hero";
 
 const Heroes = function() {
   //_______________________CONSTANTS__________________________
@@ -108,7 +107,6 @@ const Heroes = function() {
               />
             )
           })}
-          {/* <Route path=":id" element={<Hero />} /> */}
         </Routes>
 
         <ButtonScrollUp scroll={scroll}/>

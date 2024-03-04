@@ -16,3 +16,15 @@ export const format = function(num) {
   }
   return number
 }
+
+export const sortDataByParam = function(data, param) {
+  const returnData = data;
+
+  returnData.sort((hero1, hero2) => {
+    if (hero1.get(param).props.pieces > hero2.get(param).props.pieces) return 1;
+    if (hero1.get(param).props.pieces === hero2.get(param).props.pieces) return 0;
+    if (hero1.get(param).props.pieces < hero2.get(param).props.pieces) return -1;
+  })
+
+  return returnData
+}
