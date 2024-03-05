@@ -88,12 +88,6 @@ const Heroes = function() {
     setScroll(window.scrollY)
   })
 
-  const [incr, setIncr] = useState(0);
-  useEffect(() => {
-    setIncr(incr + 1)
-    console.log(incr)
-  }, [proHeroesDataArr])
-
   //_______________________COMPONENT__________________________
   return (
     <main className={classes.main}>
