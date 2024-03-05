@@ -17,14 +17,21 @@ export const format = function(num) {
   return number
 }
 
-export const sortDataByParam = function(data, param) {
+export const sortDataByParam = function(data, param, reverse = 1) {
   const returnData = data;
 
-  returnData.sort((hero1, hero2) => {
-    if (hero1.get(param).props.pieces > hero2.get(param).props.pieces) return 1;
-    if (hero1.get(param).props.pieces === hero2.get(param).props.pieces) return 0;
-    if (hero1.get(param).props.pieces < hero2.get(param).props.pieces) return -1;
-  })
-
+  if ('name' in data[0].get(param).props) {
+    returnData.sort((hero1, hero2) => {
+      if (hero1.get(param).props.name > hero2.get(param).props.name) return 1 * reverse;
+      if (hero1.get(param).props.name === hero2.get(param).props.name) return 0;
+      if (hero1.get(param).props.name < hero2.get(param).props.name) return -1 * reverse;
+    })
+  } else if ('percents' in data[0].get(param).props) {
+    returnData.sort((hero1, hero2) => {
+      if (hero1.get(param).props.percents > hero2.get(param).props.percents) return 1 * reverse;
+      if (hero1.get(param).props.percents === hero2.get(param).props.percents) return 0;
+      if (hero1.get(param).props.percents < hero2.get(param).props.percents) return -1 * reverse;
+    })
+  }
   return returnData
 }

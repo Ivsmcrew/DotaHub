@@ -1,10 +1,21 @@
-const Table = function({headersArr, tableDataArr}) {
+import { useState } from "react";
+import { sortDataByParam } from "../../utils/math"
+import SortButton from "./SortButton";
+
+const Table = function({headersDataArr, tableDataArr, setTableData, }) {
+  function sortData(sortParam, sortReverse) {
+    let sortedData = sortDataByParam(tableDataArr, sortParam, sortReverse);
+    setTableData(sortedData)
+  }
+
   const getHeadElements = function(headElements) {
     return (
       headElements.map((item, index) => {
         return(
           <th className="th" key={index}>
-            {item}
+            <SortButton onClick={(sortReverse) => {sortData(item.sortParam, sortReverse)}}>
+              {item.text}
+            </SortButton>
           </th>
         )
       })  
@@ -27,7 +38,7 @@ const Table = function({headersArr, tableDataArr}) {
       <table className="table">
         <thead className="thead">
           <tr className="tr">
-            {getHeadElements(headersArr)}
+            {getHeadElements(headersDataArr)}
           </tr>
         </thead>
 

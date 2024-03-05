@@ -14,17 +14,25 @@ const Heroes = function() {
     {path: 'public', title: 'PUBLIC'},
     {path: 'turbo', title: 'TURBO'},
   ]
-  const proHeadersArr = ['HERO', 'PRO PICK %(pcs)', 'PRO BAN %(pcs)', 'PRO WIN %(pcs)'];
-  const publicHeadersArr = ['HERO', 
-                            'OVERALL WIN %(pcs)', 
-                            'OVERALL PICK %(pcs)', 
-                            'IMM/DIV/ANC WIN %(pcs)', 
-                            'IMM/DIV/ANC PICK %(pcs)', 
-                            'LEGEND/ARCH WIN %(pcs)',
-                            'LEGEND/ARCH PICK %(pcs)',
-                            'CRU/GUARD/HER WIN %(pcs)',
-                            'CRU/GUARD/HER PICK %(pcs)'];
-  const turboHeadersArr = ['HERO', 'TURBO PICK %(pcs)', 'TURBO WIN %(pcs)'];
+  const proHeadersArr = [{sortParam: 'heroCell', text: 'HERO'},
+                         {sortParam: 'pick', text: 'PRO PICK %(pcs)'}, 
+                         {sortParam: 'ban', text: 'PRO BAN %(pcs)'},
+                         {sortParam: 'win', text: 'PRO WIN %(pcs)'}
+                        ];
+  const publicHeadersArr = [{sortParam: 'heroCell', text: 'HERO'},
+                            {sortParam: 'overallWin', text: 'OVERALL WIN %(pcs)'},
+                            {sortParam: 'overallPick', text: 'OVERALL PICK %(pcs)'},
+                            {sortParam: 'ImmDivAncWin', text: 'IMM/DIV/ANC WIN %(pcs)'},
+                            {sortParam: 'ImmDivAncPick', text: 'IMM/DIV/ANC PICK %(pcs)'},
+                            {sortParam: 'LegendArchWin', text: 'LEGEND/ARCH WIN %(pcs)'},
+                            {sortParam: 'LegendArchPick', text: 'LEGEND/ARCH PICK %(pcs)'},
+                            {sortParam: 'CruGuardHerWin', text: 'CRU/GUARD/HER WIN %(pcs)'},
+                            {sortParam: 'CruGuardHerPick', text: 'CRU/GUARD/HER PICK %(pcs)'},
+                           ];
+  const turboHeadersArr = [{sortParam: 'heroCell', text: 'HERO'},
+                           {sortParam: 'turboPick', text: 'TURBO PICK %(pcs)'},
+                           {sortParam: 'turboWin', text: 'TURBO WIN %(pcs)'},
+                          ];
   const auxiliaryNavSubtitles = ['HEROES IN PRO MATCHES', 
                                  'HEROES IN PUBLIC MATCHES', 
                                  'HEROES IN TURBO MATCHES'];
@@ -70,10 +78,10 @@ const Heroes = function() {
 
   //_______________________FUNCTIONS__________________________
   const subRoutes = [
-    {path: "", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr},
-    {path: "pro", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr},
-    {path: "public", headersArr: publicHeadersArr, tableDataArr: publicHeroesDataArr},
-    {path: "turbo", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr},
+    {path: "", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr, setTableData: setProHeroesDataArr},
+    {path: "pro", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr, setTableData: setProHeroesDataArr},
+    {path: "public", headersArr: publicHeadersArr, tableDataArr: publicHeroesDataArr, setTableData: setPublicHeroesDataArr},
+    {path: "turbo", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr, setTableData: setTurboHeroesDataArr},
   ]
  
   window.addEventListener('scroll', () => {
@@ -102,7 +110,7 @@ const Heroes = function() {
                 key={index}
                 path={route.path} 
                 element={
-                  <Table headersArr={route.headersArr} tableDataArr={route.tableDataArr}/>           
+                  <Table headersDataArr={route.headersArr} tableDataArr={route.tableDataArr} setTableData={route.setTableData}/>           
                 } 
               />
             )

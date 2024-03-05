@@ -9,7 +9,7 @@
   opacity: 0;
   z-index: 900;
   transition-property: opacity;
-  transition-duration: 0.3s;
+  transition-duration: 0.2s;
 }
 .backLayer_active{
   visibility: visible;
@@ -30,7 +30,7 @@
   padding: 10px 0px 40px 0px;
   border-radius: 5px;
   transition-property: transform;
-  transition-duration: 0.3s;
+  transition-duration: 0.2s;
 }
 .ivsmSidebar_active{
   transform: translateX(2%) translateY(1%);
