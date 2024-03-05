@@ -10,7 +10,7 @@ function SortButton({onClick, children}) {
 
   return (
     <button onClick={click}>
-      {children}
+      {sortReverse > 0 ? `${children} ▲` : `${children} ▼`}
     </button>
   )
 }
