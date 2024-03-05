@@ -88,6 +88,12 @@ const Heroes = function() {
     setScroll(window.scrollY)
   })
 
+  const [incr, setIncr] = useState(0);
+  useEffect(() => {
+    setIncr(incr + 1)
+    console.log(incr)
+  }, [proHeroesDataArr])
+
   //_______________________COMPONENT__________________________
   return (
     <main className={classes.main}>
@@ -110,7 +116,7 @@ const Heroes = function() {
                 key={index}
                 path={route.path} 
                 element={
-                  <Table headersDataArr={route.headersArr} tableDataArr={route.tableDataArr} setTableData={route.setTableData}/>           
+                  <Table headersDataArr={route.headersArr} tableDataArr={route.tableDataArr} setTableData={route.setTableData}/>                 
                 } 
               />
             )

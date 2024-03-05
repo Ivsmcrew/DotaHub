@@ -2,10 +2,12 @@ import { useState } from "react";
 import { sortDataByParam } from "../../utils/math"
 import SortButton from "./SortButton";
 
-const Table = function({headersDataArr, tableDataArr, setTableData, }) {
+const Table = function({headersDataArr, tableDataArr, setTableData }) {
+  let [value, setState] = useState(true);
+
   function sortData(sortParam, sortReverse) {
-    let sortedData = sortDataByParam(tableDataArr, sortParam, sortReverse);
-    setTableData(sortedData)
+    setTableData(sortDataByParam(tableDataArr, sortParam, sortReverse));
+    setState(!value)
   }
 
   const getHeadElements = function(headElements) {
