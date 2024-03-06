@@ -7,6 +7,17 @@ class OpenDotaService {
   static steamCDN2 = 'https://steamcdn-a.akamaihd.net';
   static openDotaCDN = 'https://api.opendota.com/api';
 
+  //returns heroes promise
+  static async getHeroes(){
+    try {
+      let response = await fetch(this.openDotaCDN + '/heroes');
+      let heroes = response.json();
+      return heroes
+    } catch(err) {
+      console.log('Error message' + err.message)
+    }
+  }
+
   //returns heroStats promise
   static async getHeroStats() {
     try {

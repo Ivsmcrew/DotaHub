@@ -1,0 +1,42 @@
+.abilities{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 10px;
+  margin-top: 20px;
+}
+.ability{
+  width: 55px;
+  height: 55px;
+  background-color: rgba(0, 0, 0, 0.401);
+  border-radius: 5px;
+}
+.talents{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.talents:hover > .talents__icon{
+  width:53px;
+  filter:brightness(1.5);
+}
+.aghanim{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.aghanim:hover > .scepter__icon,.aghanim:hover > .shard__icon{
+  width: 33px;
+  filter:brightness(1.5);
+}
+.talents__icon{
+  width: 50px;
+}
+.scepter__icon{
+  width:30px;
+}
+.shard__icon{
+  width:30px;
+}
