@@ -249,6 +249,28 @@ class OpenDotaService {
       console.log(err)
     } 
   }
+
+  //returns promise about ability titles of heroes
+  static async getAbilityTitles() {
+    try {
+      const response = await fetch('https://api.opendota.com/api/constants/hero_abilities');
+      const abilityTitles = await response.json();
+      return abilityTitles
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
+
+  //returns promise about all of the abilities
+  static async getAbilities() {
+    try {
+      const response = await fetch('https://api.opendota.com/api/constants/abilities');
+      const abilities = await response.json();
+      return abilities
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
 }
 
 export default OpenDotaService

@@ -21,11 +21,11 @@
   flex-direction: column;
 }
 .heroFrame__name{
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: white;
   font-weight: bold;
 }
 .heroFrame__roles{
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color:rgb(216, 223, 229);
 }

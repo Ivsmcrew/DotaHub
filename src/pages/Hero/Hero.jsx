@@ -10,15 +10,21 @@ function Hero() {
   const { id } = useParams();
   const [heroes, setHeroes] = useState([]);
   const [heroesStats, setHeroesStats] = useState([]);
+  const [abilityTitles, setAbilityTitles] = useState({});
+  const [abilities, setAbilities] = useState({});
   const [hero, setHero] = useState({});
   const [heroStats, setHeroStats] = useState({});
   const [heroData, setHeroData] = useState({});
+  const [heroAbilityTitles, setHeroAbilityTitles] = useState({abilities: [], talents: []});
+  const [heroAbilities, setHeroAbilities] = useState({abilities: [], talents: []});
 
   //Data refreshing
   useEffect(() => {
     async function fetchData() {
       setHeroes(await OpenDotaService.getHeroes());
       setHeroesStats(await OpenDotaService.getHeroStats());  
+      setAbilityTitles(await OpenDotaService.getAbilityTitles());
+      setAbilities(await OpenDotaService.getAbilities());
     }
     fetchData()
   }, [])
@@ -33,8 +39,25 @@ function Hero() {
       if (heroStats.id == id) {
         setHeroStats(heroStats)
       }
-    }
+    } 
   }, [heroes, heroesStats])
+
+  useEffect(() => {
+    setHeroAbilityTitles(abilityTitles[heroStats.name]);
+  }, [abilityTitles])
+
+  useEffect(() => {
+    if (heroAbilityTitles) {
+      let heroAbilities = {abilities:[], talents:[]};
+      heroAbilityTitles.abilities.forEach((abilityTitle) => {
+        heroAbilities.abilities.push(abilities[abilityTitle]) 
+      })
+      heroAbilityTitles.talents.forEach((talent) => {
+        heroAbilities.talents.push(abilities[talent.name])
+      })
+      setHeroAbilities(heroAbilities)
+    }
+  }, [abilities, heroAbilityTitles])
 
   useEffect(() => {
     setHeroData({
@@ -49,8 +72,10 @@ function Hero() {
       'strGain': heroStats.str_gain,
       'agiGain': heroStats.agi_gain,
       'intGain': heroStats.int_gain,
+      'abilities': heroAbilities.abilities,
+      'talents': heroAbilities.talents,
     })
-  }, [hero, heroStats])
+  }, [hero, heroStats, heroAbilities])
 
   //Component
   return (

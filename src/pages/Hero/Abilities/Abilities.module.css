@@ -10,6 +10,25 @@
   height: 55px;
   background-color: rgba(0, 0, 0, 0.401);
   border-radius: 5px;
+  position: relative;
+}
+.ability:hover > .ability__icon{
+  transform: translateX(-50%) translateY(-50%) scale(1.05);
+  filter: brightness(1.1)
+}
+.ability__icon:hover ~ .ability__hint{
+  display: flex;
+}
+.ability__hint{
+  display: none;
+}
+.ability__icon{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 5px;
+  filter: brightness(0.8);
 }
 .talents{
   display: flex;
@@ -39,4 +58,18 @@
 }
 .shard__icon{
   width:30px;
+}
+.mana{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 16px;
+  border-radius: 5px 0 5px 0;
+  background-color: rgba(0, 0, 0, 0.545);
+  color: #7d8bd8c3;
+  font-size: 0.7rem;
 }
