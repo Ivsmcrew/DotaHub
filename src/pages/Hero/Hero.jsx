@@ -17,6 +17,8 @@ function Hero() {
   const [heroData, setHeroData] = useState({});
   const [heroAbilityTitles, setHeroAbilityTitles] = useState({abilities: [], talents: []});
   const [heroAbilities, setHeroAbilities] = useState({abilities: [], talents: []});
+  const [aghanimTitles, setAghanimTitles] = useState([]);
+  const [heroAghanim, setHeroAghanim] = useState({});
 
   //Data refreshing
   useEffect(() => {
@@ -25,6 +27,7 @@ function Hero() {
       setHeroesStats(await OpenDotaService.getHeroStats());  
       setAbilityTitles(await OpenDotaService.getAbilityTitles());
       setAbilities(await OpenDotaService.getAbilities());
+      setAghanimTitles(await OpenDotaService.getAghanimTitles());
     }
     fetchData()
   }, [])
@@ -60,6 +63,16 @@ function Hero() {
   }, [abilities, heroAbilityTitles])
 
   useEffect(() => {
+    if (aghanimTitles.length) {
+      aghanimTitles.forEach((item) => {
+        if (item.hero_id == id) {
+          setHeroAghanim(item)
+        }
+      })
+    }
+  }, [aghanimTitles])
+
+  useEffect(() => {
     setHeroData({
       'imgSrc': OpenDotaService.steamCDN1 + heroStats.img,
       'alt': hero.localized_name,
@@ -74,8 +87,9 @@ function Hero() {
       'intGain': heroStats.int_gain,
       'abilities': heroAbilities.abilities,
       'talents': heroAbilities.talents,
+      'aghanim': heroAghanim
     })
-  }, [hero, heroStats, heroAbilities])
+  }, [hero, heroStats, heroAbilities, heroAghanim])
 
   //Component
   return (

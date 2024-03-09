@@ -6,6 +6,7 @@
   z-index: 100;
   border: 2px solid rgb(61, 61, 72);
   width: 380px;
+  min-height: 10px;
   background-color: rgb(39, 40, 46);
 }
 .title{

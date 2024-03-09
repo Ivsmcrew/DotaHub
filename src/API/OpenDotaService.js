@@ -271,6 +271,17 @@ class OpenDotaService {
       console.log(err.message)
     }
   }
+
+  //returns promise about aghanims titles
+  static async getAghanimTitles() {
+    try {
+      const response = await fetch('https://api.opendota.com/api/constants/aghs_desc');
+      const aghanimTitles = await response.json();
+      return aghanimTitles
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
 }
 
 export default OpenDotaService

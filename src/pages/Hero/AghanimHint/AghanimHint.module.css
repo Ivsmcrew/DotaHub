@@ -1,0 +1,33 @@
+.hint{
+  flex-direction: column;
+  position: absolute;
+  left: -355px;
+  top: -100px;
+  z-index: 100;
+  border: 2px solid rgb(61, 61, 72);
+  width: 350px;
+  min-height: 10px;
+  background-color: rgb(39, 40, 46);
+}
+.title{
+  width: 100%;
+  display: flex;
+  background-color: rgb(65, 66, 71);
+  align-items: center;
+  padding: 10px 20px;
+}
+.title__text{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 10px;
+  color: rgb(228, 229, 235);
+}
+.value{
+  color: white;
+}
+.skill{
+  padding: 10px 20px;
+}
+.description{
+  padding: 10px 20px;
+}

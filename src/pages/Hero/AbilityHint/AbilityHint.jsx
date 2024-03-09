@@ -3,8 +3,6 @@ import classes from "./AbilityHint.module.css"
 import OpenDotaService from '../../../API/OpenDotaService'
 
 function AbilityHint({className, ability}) {
-  console.log(ability)
-
   function returnValue(value) {
     let str = '';
     if (Array.isArray(value)) {

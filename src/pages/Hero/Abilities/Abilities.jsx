@@ -5,6 +5,8 @@ import scepterIcon from '../../../assets/icons/scepter.png'
 import shardIcon from '../../../assets/icons/shard.png'
 import OpenDotaService from '../../../API/OpenDotaService'
 import AbilityHint from '../AbilityHint/AbilityHint'
+import TalentsHint from '../TalentsHint/TalentsHint'
+import AghanimHint from '../AghanimHint/AghanimHint'
 
 function Abilities({heroData}) {
   function isDataLoaded() {
@@ -30,6 +32,7 @@ function Abilities({heroData}) {
     <div className={classes.abilities}>
       <div className={`${classes.ability} ${classes.talents}`}>
         <img className={classes.talents__icon} src={talentsIcon} alt="talents tree" />
+        <TalentsHint className={classes.talents__hint} talents={heroData.talents}/>
       </div>
       
       {isDataLoaded() ?
@@ -54,6 +57,7 @@ function Abilities({heroData}) {
       <div className={`${classes.ability} ${classes.aghanim}`}>
         <img className={classes.scepter__icon} src={scepterIcon} alt="scepter" />
         <img className={classes.shard__icon} src={shardIcon} alt="shard" />
+        <AghanimHint className={classes.aghanim__hint} aghanim={heroData.aghanim} />
       </div>
     </div>
   )
