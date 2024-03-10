@@ -1,6 +1,6 @@
 .abilitiesFrame{
   position: relative;
-  z-index: 20;
+  z-index: 101;
   display: flex;
   flex-direction: column;
   align-items: center;

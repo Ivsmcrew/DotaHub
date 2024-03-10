@@ -50,18 +50,22 @@ function AbilityHint({className, ability}) {
 
       <div className={classes.delimiter} />
 
-      <div className={classes.stats}>
-        {ability.attrib.map((item) => {
-          return(
-            <div key={item.key}>
-              <span>{item.header} </span>
-              <span className={classes.value}>{returnValue(item.value)}</span>
-            </div>
-          )
-        })}
-      </div>
-
-      <div className={classes.delimiter} />
+      {ability.attrib.length ?
+        <>
+          <div className={classes.stats}>
+            {ability.attrib.map((item) => {
+              return(
+                <div key={item.key}>
+                  <span>{item.header} </span>
+                  <span className={classes.value}>{returnValue(item.value)}</span>
+                </div>
+              )
+            })}
+          </div>
+          <div className={classes.delimiter} />
+        </> :
+        null
+      }
 
       <div className={classes.cost}>
         <div className={classes.cost__indicator} />
