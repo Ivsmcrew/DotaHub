@@ -30,3 +30,6 @@
   backdrop-filter: blur(30px) brightness(60%);
   border-radius: 8px;
 }
+.details{
+  margin-top: 15px;
+}

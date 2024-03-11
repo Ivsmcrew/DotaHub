@@ -4,6 +4,7 @@ import HeroFrame from './HeroFrame/HeroFrame';
 import OpenDotaService from '../../API/OpenDotaService';
 import classes from './Hero.module.css';
 import AbilitiesFrame from './AbilitiesFrame/AbilitiesFrame';
+import DetailsTable from './DetailsTable/DetailsTable';
 
 function Hero() {
   //States
@@ -101,15 +102,14 @@ function Hero() {
             <HeroFrame heroData={heroData} />
             <AbilitiesFrame heroData={heroData} />
           </div>
-          <div className="details">
-            <div className="table"></div>
+          <div className={classes.details}>
+            <DetailsTable heroStats={heroStats}/>
           </div>
         </div>
 
         <div className="statistics">
           <div className="auxiliaryNav">
             <ul>
-              <li>Top players</li>
               <li>Benchmarks</li>
               <li>Recent</li>
               <li>Matchups</li>

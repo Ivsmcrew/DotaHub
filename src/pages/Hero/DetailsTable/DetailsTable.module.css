@@ -1,0 +1,23 @@
+.table{
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+.row{
+  display: flex;
+  column-gap: 30px;
+  width: 100%;
+}
+.row:nth-child(odd) > .cell{
+  background-color: rgba(0, 0, 0, 0.188);
+}
+.row:nth-child(even) > .cell{
+  background-color: rgba(0, 0, 0, 0.425);
+}
+.cell{
+  flex: 1 0 10px;
+}
+.data{
+  padding: 15px;
+  font-size: 0.9rem;
+}
