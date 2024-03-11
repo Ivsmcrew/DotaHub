@@ -25,19 +25,19 @@ export const footerDataMap = new Map([
     'supportLinks', 
     [
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Help'
       },
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Advisories'
       },
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Contacts'
       },
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Status'
       },
     ]
@@ -47,11 +47,11 @@ export const footerDataMap = new Map([
     'companyLinks', 
     [
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'About'
       },
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Blog'
       },
     ]
@@ -61,15 +61,15 @@ export const footerDataMap = new Map([
     'termsLinks', 
     [
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Policies'
       },
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Terms of use'
       },
       {
-        'to': '/',
+        'to': 'https://github.com/Ivsmcrew',
         'title': 'Privacy'
       },
     ]
