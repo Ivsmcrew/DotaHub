@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Route, Routes, useParams } from 'react-router-dom'
 import HeroFrame from './HeroFrame/HeroFrame';
 import OpenDotaService from '../../API/OpenDotaService';
 import classes from './Hero.module.css';
 import AbilitiesFrame from './AbilitiesFrame/AbilitiesFrame';
 import DetailsTable from './DetailsTable/DetailsTable';
+import AuxiliaryNav from '../../components/AuxiliaryNav';
+import ButtonScrollUp from '../../UI/button/ButtonScrollUp';
 
 function Hero() {
+  //Constants
+  const NAVITEMS = [
+    {path: 'benchmarks', title: 'BENCHMARKS'},
+    {path: 'recent', title: 'RECENT'},
+    {path: 'matchups', title: 'MATHUPS'},
+    {path: 'items', title: 'ITEMS'},
+  ]
+
   //States
+  const [scroll, setScroll] = useState(0);
   const { id } = useParams();
   const [heroes, setHeroes] = useState([]);
   const [heroesStats, setHeroesStats] = useState([]);
@@ -92,6 +103,23 @@ function Hero() {
     })
   }, [hero, heroStats, heroAbilities, heroAghanim])
 
+  //Functions
+  const subRoutes = [
+    {path: ""},
+    {path: "benchmarks"},
+    {path: "recent"},
+    {path: "matchups"},
+    {path: "items"},
+    // {path: "", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr, setTableData: setProHeroesDataArr},
+    // {path: "benchmarks", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr, setTableData: setProHeroesDataArr},
+    // {path: "recent", headersArr: publicHeadersArr, tableDataArr: publicHeroesDataArr, setTableData: setPublicHeroesDataArr},
+    // {path: "matchups", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr, setTableData: setTurboHeroesDataArr},
+    // {path: "items", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr, setTableData: setTurboHeroesDataArr},
+  ]
+  window.addEventListener('scroll', () => {
+    setScroll(window.scrollY)
+  })
+
   //Component
   return (
     <div className='main'>
@@ -107,17 +135,22 @@ function Hero() {
           </div>
         </div>
 
-        <div className="statistics">
-          <div className="auxiliaryNav">
-            <ul>
-              <li>Benchmarks</li>
-              <li>Recent</li>
-              <li>Matchups</li>
-              <li>Items</li>
-            </ul>
-          </div>
-          <div className="table">
-          </div>
+        <div className={classes.statistics}>
+          <header className={classes.hero__header}>
+            <AuxiliaryNav navItems={NAVITEMS}/>
+          </header>
+          <Routes>
+            {subRoutes.map((route, index) => {
+              return(
+                <Route key={index}
+                       path={route.path}
+                       element={
+                         <div>TABLE</div>
+                       }/>
+              )
+            })}
+          </Routes>
+          <ButtonScrollUp scroll={scroll}/>
         </div>
 
       </div>

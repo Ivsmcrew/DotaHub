@@ -2,6 +2,7 @@
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
+  color:rgb(229, 223, 223);
 }
 .row{
   display: flex;
@@ -9,10 +10,10 @@
   width: 100%;
 }
 .row:nth-child(odd) > .cell{
-  background-color: rgba(0, 0, 0, 0.188);
+  background-color: rgba(255, 255, 255, 0.065);
 }
 .row:nth-child(even) > .cell{
-  background-color: rgba(0, 0, 0, 0.425);
+  background-color: rgba(255, 255, 255, 0.182);
 }
 .cell{
   flex: 1 0 10px;
