@@ -7,11 +7,9 @@ function DetailsTable({heroStats}) {
       if (heroStats.id) {
         return true
       } else {
-        console.log('HeroStats data isnt loaded for Details Table')
         return false
       }
     } else {
-      console.log('HeroStats data isnt loaded for Details Table')
       return false
     }
   }

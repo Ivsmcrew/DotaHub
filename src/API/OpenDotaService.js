@@ -282,6 +282,17 @@ class OpenDotaService {
       console.log(err.message)
     }
   }
+
+  //returns promise about benchmarks
+  static async getBenchmarks(id) {
+    try {
+      const response = await fetch(`https://api.opendota.com/api/benchmarks?hero_id=${id}`);
+      const benchmarks = await response.json();
+      return benchmarks
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 }
 
 export default OpenDotaService

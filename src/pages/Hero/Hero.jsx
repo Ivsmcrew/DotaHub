@@ -7,6 +7,9 @@ import AbilitiesFrame from './AbilitiesFrame/AbilitiesFrame';
 import DetailsTable from './DetailsTable/DetailsTable';
 import AuxiliaryNav from '../../components/AuxiliaryNav';
 import ButtonScrollUp from '../../UI/button/ButtonScrollUp';
+import IBenchmarks from './IBenchmark/IBenchmarks';
+import Recent from './Recent/Recent';
+import Matchups from './Matchups/Matchups';
 
 function Hero() {
   //Constants
@@ -14,12 +17,11 @@ function Hero() {
     {path: 'benchmarks', title: 'BENCHMARKS'},
     {path: 'recent', title: 'RECENT'},
     {path: 'matchups', title: 'MATHUPS'},
-    {path: 'items', title: 'ITEMS'},
   ]
 
   //States
-  const [scroll, setScroll] = useState(0);
   const { id } = useParams();
+  const [scroll, setScroll] = useState(0);
   const [heroes, setHeroes] = useState([]);
   const [heroesStats, setHeroesStats] = useState([]);
   const [abilityTitles, setAbilityTitles] = useState({});
@@ -31,6 +33,7 @@ function Hero() {
   const [heroAbilities, setHeroAbilities] = useState({abilities: [], talents: []});
   const [aghanimTitles, setAghanimTitles] = useState([]);
   const [heroAghanim, setHeroAghanim] = useState({});
+  const [benchmarksData, setBenchmarksData] = useState({hero_id: null, result: {}});
 
   //Data refreshing
   useEffect(() => {
@@ -40,6 +43,7 @@ function Hero() {
       setAbilityTitles(await OpenDotaService.getAbilityTitles());
       setAbilities(await OpenDotaService.getAbilities());
       setAghanimTitles(await OpenDotaService.getAghanimTitles());
+      setBenchmarksData(await OpenDotaService.getBenchmarks(id));
     }
     fetchData()
   }, [])
@@ -105,16 +109,10 @@ function Hero() {
 
   //Functions
   const subRoutes = [
-    {path: ""},
-    {path: "benchmarks"},
-    {path: "recent"},
-    {path: "matchups"},
-    {path: "items"},
-    // {path: "", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr, setTableData: setProHeroesDataArr},
-    // {path: "benchmarks", headersArr: proHeadersArr, tableDataArr: proHeroesDataArr, setTableData: setProHeroesDataArr},
-    // {path: "recent", headersArr: publicHeadersArr, tableDataArr: publicHeroesDataArr, setTableData: setPublicHeroesDataArr},
-    // {path: "matchups", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr, setTableData: setTurboHeroesDataArr},
-    // {path: "items", headersArr: turboHeadersArr, tableDataArr: turboHeroesDataArr, setTableData: setTurboHeroesDataArr},
+    {path: "", element: <IBenchmarks fetchedData={benchmarksData} />},
+    {path: "benchmarks", element: <IBenchmarks fetchedData={benchmarksData} />},
+    {path: "recent", element: <Recent />},
+    {path: "matchups", element: <Matchups />}
   ]
   window.addEventListener('scroll', () => {
     setScroll(window.scrollY)
@@ -144,9 +142,7 @@ function Hero() {
               return(
                 <Route key={index}
                        path={route.path}
-                       element={
-                         <div>TABLE</div>
-                       }/>
+                       element={route.element}/>
               )
             })}
           </Routes>

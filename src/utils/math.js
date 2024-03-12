@@ -18,6 +18,8 @@ export const format = function(num) {
 }
 
 export const sortDataByParam = function(data, param, reverse = 1) {
+  console.log(param)
+  console.log(data)
   const returnData = data;
 
   if ('name' in data[0].get(param).props) {
