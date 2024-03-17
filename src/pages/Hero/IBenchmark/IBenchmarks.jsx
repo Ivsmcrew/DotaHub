@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import classes from './IBenchmarks.module.css'
 import Table from '../../../UI/table/Table'
 import { roundWithAcc } from '../../../utils/math';
+import IPlot from '../../../UI/plot/IPlot';
 
 function IBenchmarks({fetchedData}) {
   const benchmarksHeadersArr = [
@@ -51,7 +52,6 @@ function IBenchmarks({fetchedData}) {
         ])
       )
     })
-  
     setBenchmarkDataArr(formatData)
   }
 
@@ -77,8 +77,12 @@ function IBenchmarks({fetchedData}) {
   return (
     isDataFormatted() ?
     <div className={classes.benchmarks}>
-      <div className={classes.plots} />
-      <Table headersDataArr={benchmarksHeadersArr} tableDataArr={benchmarksDataArr} setTableData={setBenchmarkDataArr}/>
+      <div className={classes.plots}>
+        <IPlot data={data.gold_per_min}></IPlot> {/**FIX DATA IN COMMON FORMAT */}
+      </div>
+      <Table headersDataArr={benchmarksHeadersArr} 
+             tableDataArr={benchmarksDataArr} 
+             setTableData={setBenchmarkDataArr}/>
     </div> :
     null
   )

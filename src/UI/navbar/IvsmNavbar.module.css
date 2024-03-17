@@ -7,7 +7,7 @@
   width: 100%;
   background-color: rgba(15, 25, 61, 0.6);
   backdrop-filter: blur(20px);
-  z-index: 100;
+  z-index: 200;
 }
 .content{
   margin: 0 auto;
