@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import IPlot from '../../../UI/plot/IPlot';
+import classes from './Plots.module.css';
 
 function Plots({data, width}) {
   const TITLES = {
@@ -56,7 +57,7 @@ function Plots({data, width}) {
                        dataLineColor={LINE_COLORS[index]}
                        gradStartColor={GRAD_COLORS_START[index]}
                        gradEndColor={GRAD_COLORS_END[index]}/>
-                <div>{TITLES[item]}</div>
+                <div className={classes.title}>{TITLES[item]}</div>
               </div>
             )
           }

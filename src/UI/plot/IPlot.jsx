@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import classes from './IPlot.module.css';
+import { roundWithAcc } from '../../utils/math';
 
 function IPlot({data, 
                 dataWidth = 500, 
@@ -140,15 +141,22 @@ function IPlot({data,
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       ctx.fillStyle = TEXT_COLOR;
-      ctx.fillText(`${benchmarkData.xAxisTitles[0]}%`, i, PADDING + benchmarkData.plotHeight + 5);
+      ctx.fillText(`${roundWithAcc( benchmarkData.xAxisTitles[0], 2 )}%`, i, PADDING + benchmarkData.plotHeight + 5);
       benchmarkData.xAxisTitles.shift();
     }
     for (let i = PADDING + 0.5; i <= PADDING + benchmarkData.plotHeight + 0.5; i += benchmarkData.scaleYPX) {
+      let digit = benchmarkData.yAxisTitles[benchmarkData.yAxisTitles.length - 1];
+      if (digit < 10) {
+        digit = roundWithAcc(digit, 2)
+      } else {
+        digit = Math.trunc(digit)
+      }
+
       ctx.font = AXIS_FONT;
       ctx.textAlign = 'right';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = TEXT_COLOR;
-      ctx.fillText(`${benchmarkData.yAxisTitles[benchmarkData.yAxisTitles.length - 1]}`, PADDING - (AXIS_DELIMITERS_LENGTH / 2) - 3, i);
+      ctx.fillText(`${digit}`, PADDING - (AXIS_DELIMITERS_LENGTH / 2) - 3, i);
       benchmarkData.yAxisTitles.pop();
     }
   }
@@ -163,6 +171,7 @@ function IPlot({data,
     ctx.strokeStyle = LINE_COLOR;
     ctx.moveTo(benchmarkData.startX, benchmarkData.startY);
     for (let i = 0; i < benchmarkData.xValues.length; i++) {
+      console.log(benchmarkData.yValues[i])
       ctx.lineTo(xCanvasFromDecart(benchmarkData.xValues[i]), yCanvasFromDecart(benchmarkData.yValues[i]));
     }
     ctx.stroke();

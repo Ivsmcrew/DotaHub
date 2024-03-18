@@ -1,5 +1,6 @@
 .plots{
   margin: 0px;
+  margin-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
