@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from './IBenchmarks.module.css'
 import Table from '../../../UI/table/Table'
 import { roundWithAcc } from '../../../utils/math';
-import IPlot from '../../../UI/plot/IPlot';
+import Plots from '../Plots/Plots';
 
 function IBenchmarks({fetchedData}) {
   const benchmarksHeadersArr = [
@@ -17,6 +17,8 @@ function IBenchmarks({fetchedData}) {
 
   const [data, setData] = useState({});
   const [benchmarksDataArr, setBenchmarkDataArr] = useState({});
+  const plotsContainer = useRef();
+  const [plotsContainerWidth, setPlotsContainerWidth] = useState();
 
   useEffect(() => {
     setData(fetchedData.result)
@@ -26,6 +28,11 @@ function IBenchmarks({fetchedData}) {
       getFormatData()
     } 
   }, [data])
+  useEffect(() => {
+    if (plotsContainer.current) {
+      setPlotsContainerWidth(plotsContainer.current.offsetWidth)
+    }
+  }, [benchmarksDataArr])
 
   function getFormatData() {
     let formatData = [];
@@ -77,8 +84,8 @@ function IBenchmarks({fetchedData}) {
   return (
     isDataFormatted() ?
     <div className={classes.benchmarks}>
-      <div className={classes.plots}>
-        <IPlot data={data.gold_per_min}></IPlot> {/**FIX DATA IN COMMON FORMAT */}
+      <div ref={plotsContainer} className={classes.plots}>
+        <Plots data={data} width={plotsContainerWidth}/>
       </div>
       <Table headersDataArr={benchmarksHeadersArr} 
              tableDataArr={benchmarksDataArr} 
