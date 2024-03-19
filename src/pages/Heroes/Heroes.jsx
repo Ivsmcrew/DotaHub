@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import OpenDotaService from "../../API/OpenDotaService";
 import classes from "./Heroes.module.css";

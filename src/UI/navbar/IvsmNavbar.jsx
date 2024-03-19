@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import IvsmMenuButton from "../button/IvsmMenuButton";
 import IvsmLogo from "../logo/IvsmLogo";
 import classes from "./IvsmNavbar.module.css";
@@ -15,7 +15,7 @@ const IvsmNavbar = function() {
     document.documentElement.style.overflow = isActive ? 'visible' : 'hidden'
     setIsActive(!isActive);
   }
-  function getLinks() {
+  const getLinks = useCallback(() => {
     return(
       navbarData.map((item, index) => {
         return (
@@ -28,7 +28,10 @@ const IvsmNavbar = function() {
         )
       })
     )
-  }
+  }, []) 
+  const logoClasses = useMemo(() => {
+    return classes.menuLogo
+  }, [])
 
   return(
     <header className={classes.header}>
@@ -36,7 +39,7 @@ const IvsmNavbar = function() {
         <IvsmMenuButton className={classes.menuButton} 
                         onClick={sidebarToggle}
         />
-        <IvsmLogo className={classes.menuLogo}/>
+        <IvsmLogo className={logoClasses}/>
         <div className={classes.links}>
           {getLinks()}
         </div>

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserAuthContext } from "../../context/context";
 import classes from "./IvsmEnter.module.css";
 
-const IvsmEnter = function() {
+const IvsmEnter = memo(function IvsmEnter() {
   const {isAuth, setIsAuth} = useContext(UserAuthContext);
 
   function exit() {
@@ -22,6 +22,6 @@ const IvsmEnter = function() {
       <Link className={classes.enter} to='/login'>LOGIN</Link>
     )
   }
-}
+})
 
 export default IvsmEnter
