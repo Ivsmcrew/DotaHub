@@ -12,7 +12,7 @@ This project is the first one in which I used ReactJs. It gave me experience at 
 - Drawing plots with CANVAS API
 - Deploying of a frontend app(setting up of nginx, domain, https, docker)
 
-The project is an introductory nature, so it was advisable not to end it. Working tabs are main page, heroes page and page of specific hero.
+The project is an introductory nature, so it was advisable not to end it and not to do responsible this one. Working tabs are main page, heroes page and page of specific hero.
 	
 <sub> *Screenshots of the landing:* </sub>
 ![Screenshot of the page](/public/images/DotaHub1.png)
