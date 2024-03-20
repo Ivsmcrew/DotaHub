@@ -15,6 +15,6 @@ This project is the first one in which I used ReactJs. It gave me experience at 
 The project is an introductory nature, so it was advisable not to end it. Working tabs are main page, heroes page and page of specific hero.
 	
 <sub> *Screenshots of the landing:* </sub>
-![Screenshot of the page](/public/images/DotaHub1.PNG)
-![Screenshot of the page](/public/images/DotaHub2.PNG)
-![Screenshot of the page](/public/images/DotaHub3.PNG)
+![Screenshot of the page](/public/images/DotaHub1.png)
+![Screenshot of the page](/public/images/DotaHub2.png)
+![Screenshot of the page](/public/images/DotaHub3.png)
