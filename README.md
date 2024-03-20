@@ -10,7 +10,7 @@ This project is the first one in which I used ReactJs. It gave me experience at 
 - Main React libraries noticed above
 - Handling with data from API(fetch, SQL queries)
 - Drawing plots with CANVAS API
-- Deploying of a frontend app(setting up of nginx, domain, https, docker)
+- Deploying of a frontend app
 
 The project is an introductory nature, so it was advisable not to end it and not to do responsible this one. Working tabs are main page, heroes page and page of specific hero.
 	
